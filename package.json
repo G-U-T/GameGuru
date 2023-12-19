@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon src/server/main.js -w src/server",
+	"test": "jest",
     "start": "NODE_ENV=production node src/server/main.js",
     "build": "vite build"
   },
