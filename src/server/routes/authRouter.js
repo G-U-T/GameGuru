@@ -1,6 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
-const jwtUtils = require('./utils');
+const jwtUtils = require('../utils');
 
 const { PrismaClient } = require("@prisma/client");
 
