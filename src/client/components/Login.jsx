@@ -2,7 +2,7 @@ import {React, useState} from "react";
 import '../App.css';
 
 const Login = () => {
-  const [email, setEmail] = useState(``);
+  const [username, setUsername] = useState(``);
   const [password, setPassword] = useState(``);
 
   const [errorMessage, setErrorMessage] = useState(null);
@@ -12,9 +12,22 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      // Login from database here
+      const response = await fetch(`/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username,
+          password,
+        }),
+      });
+      const result = await response.json();
+      if (response.ok) setSuccessMessage(`Logged in!`);
+      else setSuccessMessage(null);
     }
     catch(error) {
+      setSuccessMessage(null);
       setErrorMessage(error.message);
     }
   }
@@ -24,8 +37,8 @@ const Login = () => {
       <h3>Log in to an existing account:</h3>
 
       <label>
-        Email: <input required type="email" value={email} onChange={(event) => {
-          setEmail(event.target.value);
+        Username: <input required type="text" value={username} onChange={(event) => {
+          setUsername(event.target.value);
         }} />
       </label>
 
