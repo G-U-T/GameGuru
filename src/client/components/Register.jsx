@@ -1,8 +1,13 @@
 import {React, useState} from "react";
 import '../App.css';
 
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
+
+const VALID_SUCCESS_MESSAGE = `User registered successfully`;
+
 const Register = () => {
-  const [email, setEmail] = useState(``);
+  const [username, setUsername] = useState(``);
   const [password, setPassword] = useState(``);
 
   const [errorMessage, setErrorMessage] = useState(null);
@@ -12,9 +17,23 @@ const Register = () => {
     event.preventDefault();
 
     try {
-      // Register to database here
+      // TODO: Need to check if the username exists first.
+
+      const response = await fetch(`/auth/register`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username,
+          password,
+        }),
+      });
+      const result = await response.json();
+      setSuccessMessage(result.message);
     }
     catch(error) {
+      console.log(`eror!!`)
       setErrorMessage(error.message);
     }
   }
@@ -24,8 +43,8 @@ const Register = () => {
       <h3>Register for a new account:</h3>
 
       <label>
-        Email: <input required type="email" value={email} onChange={(event) => {
-          setEmail(event.target.value);
+        Username: <input required type="text" value={username} onChange={(event) => {
+          setUsername(event.target.value);
         }} />
       </label>
 
@@ -39,7 +58,7 @@ const Register = () => {
     </form>
 
     {errorMessage && <p>ERROR: {errorMessage}</p>}
-    {successMessage && <p>SUCCESS: {successMessage}</p>}
+    {successMessage === VALID_SUCCESS_MESSAGE && <p>SUCCESS: {successMessage}</p>}
   </>);
 }
 

@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import NavBar from "./components/NavBar";
 import ConsoleList from "./components/ConsoleList";
+import ConsoleGameList from './components/ConsoleGameList';
 import Login from './components/Login';
 import Register from './components/Register';
 
@@ -16,8 +17,11 @@ function App() {
           <Route path='/' element={
             <></>
           } />
-          <Route path='/consoles/*' element={
+          <Route path='/consoles' element={
             <ConsoleList></ConsoleList>
+          } />
+          <Route path='/consoles/:consoleName' element={
+            <ConsoleGameList></ConsoleGameList>
           } />
           <Route path='/login' element={
             <Login></Login>
