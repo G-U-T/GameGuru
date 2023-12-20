@@ -1,6 +1,9 @@
+require('dotenv').config();
+
 const express = require("express"); 
 const ViteExpress =require ("vite-express");
-const consolesRouter= require('./consolesRouter')
+const consolesRouter= require('./consolesRouter');
+const authRouter = require("./authRouter");
 
 const app = express();
 
@@ -8,6 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/consoles', consolesRouter);
+app.use('/auth', authRouter);
 
 
 ViteExpress.listen(app, 3000, () =>
