@@ -25,6 +25,7 @@ consolesRouter.get('/:platform', async (req, res) => {
       }
   
       // Retrieve games for the specified platform
+
       const platformGames = await prisma.game.findMany({
         where: {
           platform: {
@@ -35,6 +36,30 @@ consolesRouter.get('/:platform', async (req, res) => {
       });
   
       return res.json({ platform, games: platformGames });
+    } catch (error) {
+      console.error('Error:', error);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
+  consolesRouter.get('/:platform/:letter', async (req, res) => {
+    const { platform, letter } = req.params;
+  
+    try {
+      // Retrieve games for the selected platform by letter 
+      const filteredGames = await prisma.game.findMany({
+        where: {
+          platform: {
+            equals: platform,
+          mode: 'insensitive',
+          },
+          title: {
+            startsWith: letter.toUpperCase(),
+          },
+        },
+      });
+  
+      return res.json({ platform, letter, games: filteredGames });
     } catch (error) {
       console.error('Error:', error);
       return res.status(500).json({ error: 'Internal Server Error' });
