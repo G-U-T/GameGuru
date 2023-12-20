@@ -2,6 +2,10 @@ const express = require('express');
 
 const consolesRouter = express.Router();
 
+consolesRouter.get('/', (req, res) => {
+  res.send("Consoles");
+});
+
 consolesRouter.get('/:consoleName', (req, res) => {
     const { consoleName } = req.params;
 

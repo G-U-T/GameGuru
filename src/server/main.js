@@ -7,10 +7,6 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/hello", (req, res) => {
-  res.send("Hello Vite + React!");
-});
-
 app.use('/consoles', consolesRouter);
 
 
