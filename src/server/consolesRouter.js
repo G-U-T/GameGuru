@@ -10,16 +10,28 @@ consolesRouter.get('/:platform', async (req, res) => {
     try {
       // Check if the requested platform exists
       const platformExists = await prisma.game.findMany({
-        where: { platform },
+        where: {
+          platform: {
+            equals: platform,
+            mode: 'insensitive',
+          }
+        },
       });
   
-      if (!platformExists) {
+      /* Needs to !platformExists will still be true if it's an empty array.
+      So there's an additional check that it's not empty. */
+      if (!platformExists || platformExists.length === 0) {
         return res.status(404).json({ error: 'Console not found' });
       }
   
       // Retrieve games for the specified platform
       const platformGames = await prisma.game.findMany({
-        where: { platform },
+        where: {
+          platform: {
+            equals: platform,
+            mode: 'insensitive',
+          }
+        },
       });
   
       return res.json({ platform, games: platformGames });
