@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/consoles', consolesRouter);
 app.use('/auth', authRouter);
-app.use('/games', require("./api"));
+app.use('/games', require("./api/games"));
 
 
 ViteExpress.listen(app, 3000, () =>

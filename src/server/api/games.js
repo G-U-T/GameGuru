@@ -4,18 +4,34 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient()
 
 
-/*--------------------- get a game by title --------------------*/
+/*--------------------- get a game by gameId --------------------*/
 
-router.get ("/:gameName", async (req, res) => {
-    const postName = req.params.title
-
-    const post = await prisma.game.findUnique(
+router.get ("/:gameId", async (req, res) => {
+    const gameId = parseInt(req.params.gameId);
+   
+    const game = await prisma.game.findUnique(
         {
             where: {
-                title: postName
+                id: gameId
             },
         })
-        res.send(post || {});
+        res.send(game || {});
+})
+
+/*--------------------- get reviews by gameId --------------------*/
+
+router.get("/:gameId/reviews", async (req, res) => {
+    const gameId = parseInt(req.params.gameId)
+    const reviews = await prisma.review.findMany(
+        {
+            where: {
+                gameId:gameId,
+            },
+        }
+    );
+    res.send(reviews);
+
+   
 })
 
 module.exports = router;
