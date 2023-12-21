@@ -4,6 +4,7 @@ const express = require("express");
 const ViteExpress =require ("vite-express");
 const consolesRouter= require('./routes/consolesRouter');
 const authRouter = require("./routes/authRouter");
+const usersRouter = require("./routes/usersRouter");
 const gamesRouter = require("./api/games");
 const app = express();
 
