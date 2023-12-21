@@ -30,7 +30,7 @@ const ConsoleGameList = () => {
         <div key={game.id} className="game-card">
           <img src={game.cover_image_url} alt={game.title} />
           <p>{game.title}</p>
-          <Link to={`/api/games/${game.id}`}></Link>
+          <Link to={`/api/games/${game.id}`}>{game.title}</Link>
         </div>
       ))}
     </div>
