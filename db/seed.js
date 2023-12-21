@@ -19,18 +19,18 @@ const createGame = async() => {
 
     await prisma.game.createMany({
         data: [
-            {title: 'HALO 1', release_date: new Date('2001-01-01'), platform: 'XBOX', genre:'open world', description:'n/a', cover_image_url: 'n/a'},
-            {title: 'HALO 2', release_date: new Date('2002-02-02'), platform: 'XBOX', genre:'open world', description:'n/a', cover_image_url: 'n/a'},
-            {title: 'HALO 3', release_date: new Date('2003-03-03'), platform: 'XBOX', genre:'open world', description:'n/a', cover_image_url: 'n/a'},
-            {title: 'SPIDERMAN 1', release_date: new Date('2004-04-04'), platform: 'PlayStation', genre:'open world', description:'n/a', cover_image_url: 'n/a'},
-            {title: 'SPIDERMAN 2', release_date: new Date('2005-05-05'), platform: 'PlayStation', genre:'open world', description:'n/a', cover_image_url: 'n/a'},
-            {title: 'SPIDERMAN 3', release_date: new Date('2006-06-06'), platform: 'PlayStation', genre:'open world', description:'n/a', cover_image_url: 'n/a'},
-            {title: 'MARIO 1', release_date: new Date('2007-07-07'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: 'n/a'},
-            {title: 'MARIO 2', release_date: new Date('2008-08-08'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: 'n/a'},
-            {title: 'MARIO 3', release_date: new Date('2009-09-09'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: 'n/a'},
-            {title: 'GTA 1', release_date: new Date('2010-10-10'), platform: 'PC', genre:'open world', description:'n/a', cover_image_url: 'n/a'},
-            {title: 'GTA 2', release_date: new Date('2011-11-11'), platform: 'PC', genre:'open world', description:'n/a', cover_image_url: 'n/a'},
-            {title: 'GTA 3', release_date: new Date('2012-12-12'), platform: 'PC', genre:'open world', description:'n/a', cover_image_url: 'n/a'},
+            {title: 'HALO 1', release_date: new Date('2001-01-01'), platform: 'XBOX', genre:'open world', description:'n/a', cover_image_url:'/halo1.jpg'},
+            {title: 'HALO 2', release_date: new Date('2002-02-02'), platform: 'XBOX', genre:'open world', description:'n/a', cover_image_url: '/halo2.jpg'},
+            {title: 'HALO 3', release_date: new Date('2003-03-03'), platform: 'XBOX', genre:'open world', description:'n/a', cover_image_url: '/halo3.jpg'},
+            {title: 'SPIDERMAN 1', release_date: new Date('2004-04-04'), platform: 'PlayStation', genre:'open world', description:'n/a', cover_image_url: '/spiderman1.jpg'},
+            {title: 'SPIDERMAN 2', release_date: new Date('2005-05-05'), platform: 'PlayStation', genre:'open world', description:'n/a', cover_image_url: '/spiderman2.jpg'},
+            {title: 'SPIDERMAN 3', release_date: new Date('2006-06-06'), platform: 'PlayStation', genre:'open world', description:'n/a', cover_image_url: '/spiderman3.jpg'},
+            {title: 'MARIO 1', release_date: new Date('2007-07-07'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/mario1.jpg'},
+            {title: 'MARIO 2', release_date: new Date('2008-08-08'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/mario2.jpg'},
+            {title: 'MARIO 3', release_date: new Date('2009-09-09'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/mario3.jpg'},
+            {title: 'GTA 1', release_date: new Date('2010-10-10'), platform: 'PC', genre:'open world', description:'n/a', cover_image_url: '/GTA3.jpg'},
+            {title: 'GTA 2', release_date: new Date('2011-11-11'), platform: 'PC', genre:'open world', description:'n/a', cover_image_url: '/GTA4.jpg'},
+            {title: 'GTA 3', release_date: new Date('2012-12-12'), platform: 'PC', genre:'open world', description:'n/a', cover_image_url: '/GTA5.jpg'},
         ],
     })
 }

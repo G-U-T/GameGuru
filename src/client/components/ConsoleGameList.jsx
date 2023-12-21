@@ -23,12 +23,17 @@ const ConsoleGameList = () => {
 
   return (
     <section>
-      <h2>Games on {consoleName}:</h2>
-      {gameArray.map((game) => {
-        return (<p>{game.title}</p>)
-      })}
-    </section>
-  );
+    <h2>Games on {consoleName}:</h2>
+    <div className="game-list">
+      {gameArray.map((game) => (
+        <div key={game.id} className="game-card">
+          <img src={game.cover_image_url} alt={game.title} />
+          <p>{game.title}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+);
 }
 
 export default ConsoleGameList;
