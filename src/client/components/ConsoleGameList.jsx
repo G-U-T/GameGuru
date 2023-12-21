@@ -10,7 +10,7 @@ const ConsoleGameList = () => {
   useEffect(() => {
     const getGames = async() => {
       try {
-        const response = await fetch(`/consoles/${consoleName}`);
+        const response = await fetch(`/api/consoles/${consoleName}`);
         const result = await response.json();
         setGameArray(result.games);
       }
