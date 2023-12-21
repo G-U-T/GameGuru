@@ -87,6 +87,4 @@ usersRouter.delete('/:userID/reviews/:reviewID', async (req, res) => {
   }
 });
 
-// patch and delete for comment
-
 module.exports= usersRouter;
