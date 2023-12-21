@@ -4,7 +4,7 @@ const express = require("express");
 const ViteExpress =require ("vite-express");
 const consolesRouter= require('./routes/consolesRouter');
 const authRouter = require("./routes/authRouter");
-const gamesRouter = require("./routes/gamesRouter");
+const gamesRouter = require("./api/games");
 
 const app = express();
 
@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/consoles', consolesRouter);
 app.use('/auth', authRouter);
-app.use('/games', require("./api/games"));
+app.use('/games', gamesRouter);
 
 
 ViteExpress.listen(app, 3000, () =>
