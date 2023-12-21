@@ -23,7 +23,11 @@ function App() {
           <Route path='api/consoles/:consoleName' element={
             <ConsoleGameList></ConsoleGameList>
           } />
-          <Route path='api/consoles/:consoleName/reviews'/>
+          <Route path='api/consoles/:consoleName/reviews' element={
+            <></>
+          }
+          
+          />
           <Route path='/login' element={
             <Login></Login>
           } />

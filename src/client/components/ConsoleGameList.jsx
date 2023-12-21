@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import '../App.css';
+import { Link } from 'react-router-dom';
 
 
 const ConsoleGameList = () => {
@@ -29,6 +30,7 @@ const ConsoleGameList = () => {
         <div key={game.id} className="game-card">
           <img src={game.cover_image_url} alt={game.title} />
           <p>{game.title}</p>
+          <Link to={`/api/games/${game.id}`}></Link>
         </div>
       ))}
     </div>
