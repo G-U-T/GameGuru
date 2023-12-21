@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../App.css'
 
 const ConsoleList = () => {

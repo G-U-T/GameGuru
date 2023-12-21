@@ -33,9 +33,9 @@ model Game {
 model Review {
   id        Int @id @default(autoincrement())
   gameId    Int
-  game      Game @relation(fields: [gameId], references: [id])
+  game      Game @relation(fields: [gameId], references: [id], onDelete: Cascade)
   userId    Int
-  user      User @relation(fields: [userId], references: [id])
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
   rating    Int
   summary   String
   comments  Comment[]
@@ -45,8 +45,8 @@ model Review {
 model Comment {
   id            Int @id @default(autoincrement())
   reviewsId     Int 
-  reviews       Review @relation(fields: [reviewsId], references: [id])
+  reviews       Review @relation(fields: [reviewsId], references: [id], onDelete: Cascade)
   userId        Int
-  user          User @relation(fields: [userId], references: [id])
+  user          User @relation(fields: [userId], references: [id], onDelete: Cascade)
   comment_text  String
 }

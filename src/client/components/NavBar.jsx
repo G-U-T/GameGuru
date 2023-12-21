@@ -10,7 +10,7 @@ const NavBar = () => {
       <Link to="/">Home</Link>
 
       <img src="/console-icon.svg"></img>
-      <Link to="/consoles">Consoles</Link>
+      <Link to="/api/consoles">Consoles</Link>
 
       <img src="/login-icon.svg"></img>
       <Link to="/login">Login</Link>
