@@ -124,3 +124,8 @@ button, button:active {
   font-size: 1rem;
   color: #a3a7c2;
 }
+
+.singleGame {
+  border: 2px solid red;
+  
+}

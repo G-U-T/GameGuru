@@ -25,11 +25,11 @@ const SingleGameInformation = () => {
     return (
         <section className="singleGame">
             <h1>hi</h1>
-            <p>{game.title}</p>
-            <p>{game.release_date}</p>
-            <p>{game.platform}</p>
-            <p>{game.genre}</p>
-            <p>{game.description}</p>
+            <p>TITLE: {game.title}</p>
+            <p>RELEASE DATE: {game.release_date}</p>
+            <p>PLATFORM: {game.platform}</p>
+            <p>GENRE:{game.genre}</p>
+            <p>DESCRIPTION:{game.description}</p>
                    
 
         </section>
