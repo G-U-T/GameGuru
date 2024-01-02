@@ -21,7 +21,7 @@ function App() {
           <Route path='/api/consoles' element={
             <ConsoleList></ConsoleList>
           } />
-          <Route path='api/consoles/:consoleName' element={
+          <Route path='/api/consoles/:consoleName' element={
             <ConsoleGameList></ConsoleGameList>
           } />
           
