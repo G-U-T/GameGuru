@@ -1,4 +1,5 @@
 import {React, useState} from "react";
+import UserProfile from "./UserProfile";
 import '../App.css';
 
 const Login = () => {
@@ -7,6 +8,8 @@ const Login = () => {
 
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userId, setUserId] = useState(null);
 
   const submitLogin = async(event) => {
     event.preventDefault();
@@ -23,16 +26,24 @@ const Login = () => {
         }),
       });
       const result = await response.json();
-      if (response.ok) setSuccessMessage(`Logged in!`);
-      else setSuccessMessage(null);
-    }
-    catch(error) {
+      console.log('Result after login:', result);
+      if (response.ok) {
+        setSuccessMessage('Logged in!');
+        setIsLoggedIn(true);
+        setUserId(result.userId);
+        console.log('UserID after login:', result.userId);
+      } else {
+        setSuccessMessage(null);
+      }
+    } catch (error) {
       setSuccessMessage(null);
       setErrorMessage(error.message);
     }
-  }
+  };
 
   return (<>
+    
+    {!isLoggedIn && (
     <form className="column-flex">
       <h3>Log in to an existing account:</h3>
 
@@ -49,11 +60,13 @@ const Login = () => {
       </label>
 
       <button onClick={(event) => {submitLogin(event)}}>Login</button>
-    </form>
+    </form>)}
 
     {errorMessage && <p>ERROR: {errorMessage}</p>}
     {successMessage && <p>SUCCESS: {successMessage}</p>}
-  </>);
+    {isLoggedIn && <UserProfile userId={userId} />}
+  </>
+  );
 }
 
 export default Login;

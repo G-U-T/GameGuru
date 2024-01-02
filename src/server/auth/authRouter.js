@@ -66,7 +66,7 @@ authRouter.post('/register', async (req, res) => {
         const token = jwtUtils.generateToken(user.id);
   
         // Respond with the token
-        res.json({ token });
+        res.json({ success: true, userId: user.id, token });
       } else {
         // Respond with an authentication error
         res.status(401).json({ error: 'Invalid credentials' });
