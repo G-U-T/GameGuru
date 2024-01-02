@@ -6,13 +6,14 @@ import '../App.css'
 const SingleGameInformation = () => {
     const {singleGameId} = useParams();
     const [game, setGame] = useState({});
+    const [review, setReview] = useState({});
 
     useEffect(() => {
         const getGame = async() => {
             try {
                 const response = await fetch(`/api/games/${singleGameId}`)
                 const jsonResponse = await response.json();
-                // console.log(jsonResponse);
+                console.log(jsonResponse);
                 setGame(jsonResponse);
             } catch (error) {
                 throw error;
@@ -20,18 +21,42 @@ const SingleGameInformation = () => {
         };
         getGame();
     }, [])
-    
-    console.log(game);
-    return (
-        <section className="singleGame">
-            <h1>hi</h1>
-            <p>TITLE: {game.title}</p>
-            <p>RELEASE DATE: {game.release_date}</p>
-            <p>PLATFORM: {game.platform}</p>
-            <p>GENRE:{game.genre}</p>
-            <p>DESCRIPTION:{game.description}</p>
-                   
 
+    useEffect(() => {
+        const getReview = async() => {
+            try {
+                const response = await fetch(`/api/games/${singleGameId}/reviews`)
+                const jsonResponse = await response.json();
+                // console.log(`review object: ${JSON.stringify(jsonResponse)}`)
+                setReview(jsonResponse);
+            } catch (error) {
+                throw error;
+            }
+        };
+        getReview();
+    },[])
+    
+    // console.log(game);
+    console.log(`review: ${review}`);
+    return (
+        <section >
+
+            <div className="singleGame">
+                <p>{game.title}</p>
+                <img src={game.cover_image_url}></img>
+                <p>RELEASE DATE: {game.release_date}</p>
+                <p>PLATFORM: {game.platform}</p>
+                <p>GENRE: {game.genre}</p>
+                <p>DESCRIPTION: {game.description}</p>
+            </div>
+
+            <div className="singleReview">
+
+               <p></p>
+               
+            
+            </div>
+                   
         </section>
     )
 }

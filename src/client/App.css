@@ -127,8 +127,11 @@ button, button:active {
 
 
 .singleGame {
-  border: 2px solid red;
-  
+  border: 2px solid blue;
+  width: 400px;
+
+
+}
 
 /* Alphabet list styling */
 
