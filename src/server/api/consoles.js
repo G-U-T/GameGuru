@@ -17,6 +17,8 @@ consolesRouter.get('/:platform', async (req, res) => {
           }
         },
       });
+
+      console.log(platformExists)
   
       /* Needs to !platformExists will still be true if it's an empty array.
       So there's an additional check that it's not empty. */

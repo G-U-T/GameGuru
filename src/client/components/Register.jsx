@@ -1,9 +1,6 @@
 import {React, useState} from "react";
 import '../App.css';
 
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
-
 const VALID_SUCCESS_MESSAGE = `User registered successfully`;
 
 const Register = () => {
@@ -17,8 +14,6 @@ const Register = () => {
     event.preventDefault();
 
     try {
-      // TODO: Need to check if the username exists first.
-
       const response = await fetch(`/auth/register`, {
         method: 'POST',
         headers: {
@@ -29,11 +24,21 @@ const Register = () => {
           password,
         }),
       });
+
+      if (response.status === 409) {
+        setErrorMessage(`Cannot register a username that already exists!`);
+        return;
+      }
+      else if (response.status === 422) {
+        setErrorMessage(`Username and password needs to be at least 4 characters long.`);
+        return;
+      }
+      
       const result = await response.json();
       setSuccessMessage(result.message);
+      setErrorMessage(null);
     }
     catch(error) {
-      console.log(`eror!!`)
       setErrorMessage(error.message);
     }
   }

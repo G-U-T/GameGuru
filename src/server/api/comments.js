@@ -3,6 +3,8 @@ const router = require("express").Router();
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
+const jwtUtils = require('../utils');
+
 router.get('/:commentID', async(req, res) => {
   const { commentID } = req.params;
 
@@ -22,7 +24,7 @@ router.get('/:commentID', async(req, res) => {
 });
 
 // patch and delete for comment
-router.patch('/:commentID', async (req, res) => {
+router.patch('/:commentID', jwtUtils.verifyToken, async (req, res) => {
   const { commentID } = req.params;
 
   try {
@@ -51,7 +53,7 @@ router.patch('/:commentID', async (req, res) => {
 
 // Delete a comment
 // TODO: needs to authenticate the user's token
-router.delete('/:commentID', async (req, res) => {
+router.delete('/:commentID', jwtUtils.verifyToken, async (req, res) => {
   const { commentID } = req.params;
 
   try {
