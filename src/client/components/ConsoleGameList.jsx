@@ -29,8 +29,8 @@ const ConsoleGameList = () => {
       {gameArray.map((game) => (
         <div key={game.id} className="game-card">
           <img src={game.cover_image_url} alt={game.title} />
-          <p>{game.title}</p>
-          <Link to={`/api/games/${game.id}`}>{game.title}</Link>
+          <p> <Link to={`/api/games/${game.id}`}>{game.title}</Link></p>
+         
         </div>
       ))}
     </div>
