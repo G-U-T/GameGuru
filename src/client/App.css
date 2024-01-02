@@ -138,18 +138,9 @@ button, button:active {
 }
 
 /*  usable fonts */
-@font-face {
-  font-family: "streamer";
-  src: url("GameGuru\public\StreamerDemo-eZ4Dg.otf");
-  font-weight: bold;
-  font-style: normal;
-}
 
-@font-face {
-  font-family: "8bit";
-  src: url("GameGuru\public\UglyByteFreeTrial-K7EBZ.otf");
-  font-weight: normal;
-  font-style: normal;
+
+
 
 
 .singleGame {
