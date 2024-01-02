@@ -1,9 +1,12 @@
+
 #navbar {
   position: fixed;
   left: 0px;
   top: 0px;
   width: 100%;
-  
+  padding-top: 50px;
+
+
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -13,12 +16,46 @@
   background: linear-gradient(90deg, #4f1d4c, #781d4f, #4f1d4c);
   border-bottom-left-radius: 100%;
   border-bottom-right-radius: 100%;
+  padding-top: 50px;
 }
 
-#navbar > * {
-  color: #f5ffe8;
+#title{
+  font-family: 'streamer', Helvetica, sans-serif;
+  color: goldenrod;
+  text-shadow: 2px 2px #000000;
+  position: absolute;
+  top: 0px;
+  margin-top: 1%;
+  z-index: 1;
 }
 
 #navbar > img {
   filter: invert(98%) sepia(2%) saturate(1866%) hue-rotate(35deg) brightness(101%) contrast(102%);
+  margin-right: 10px;
+}
+#navbar-link {
+ font-family: 'byte';
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: inherit;
+  font-size: 2em;
+  margin-bottom: 0.5rem;
+
+}
+
+
+
+
+@font-face {
+  font-family: 'byte';
+  src: url('../../fonts/UglyByteFreeTrial-K7EBZ.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'streamer';
+  src: url('../../fonts/StreamerDemo-eZ4Dg.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
 }
