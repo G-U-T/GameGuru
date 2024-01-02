@@ -3,7 +3,7 @@ const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
 const usersRouter = express.Router();
-
+const jwtUtils = require('../utils');
 
 // Get User Profile, needed to use ID 
 usersRouter.get('/:userID', async (req, res) => {
@@ -32,7 +32,7 @@ usersRouter.get('/:userID', async (req, res) => {
 });
 
 //Update a user review 
-usersRouter.patch('/:userID/reviews/:reviewID', async (req, res) => {
+usersRouter.patch('/:userID/reviews/:reviewID', jwtUtils.verifyToken, async (req, res) => {
   const { userID, reviewID } = req.params;
 
   try {
@@ -68,8 +68,7 @@ usersRouter.patch('/:userID/reviews/:reviewID', async (req, res) => {
 });
 
 // Delete a user review
-// TODO: needs to authenticate the user's token
-usersRouter.delete('/:userID/reviews/:reviewID', async (req, res) => {
+usersRouter.delete('/:userID/reviews/:reviewID', jwtUtils.verifyToken, async (req, res) => {
   const { userID, reviewID } = req.params;
 
   try {
