@@ -15,6 +15,23 @@ authRouter.post('/register', async (req, res) => {
       // Hash the password
       const hashedPassword = await bcrypt.hash(password, 10);
   
+      const existingUser = await prisma.user.findUnique({
+        where: {
+          username
+        }
+      })
+      if (existingUser) {
+        res.status(409).json({ error: 'Cannot register a username that already exists!' });
+        return;
+      }
+
+      const MIN_LENGTH = 4;
+
+      if (username.length < MIN_LENGTH || password.length < MIN_LENGTH) {
+        res.status(422).json({ error: `Username and password needs to be at least ${MIN_LENGTH} characters long.` });
+        return;
+      }
+
       // Create a new user
       const newUser = await prisma.user.create({
         data: {
