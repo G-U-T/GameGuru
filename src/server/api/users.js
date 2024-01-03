@@ -54,6 +54,7 @@ usersRouter.post('/:userID/reviews', jwtUtils.verifyToken, async (req, res) => {
     
     return res.json({"New review": newReview});
   } catch (error) {
+    return res.json({error});
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 });

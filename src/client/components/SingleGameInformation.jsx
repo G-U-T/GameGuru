@@ -4,10 +4,11 @@ import '../App.css'
 
 import WriteReviewForm from "./WriteReviewForm";
 
-const SingleGameInformation = () => {
+const SingleGameInformation = ({savedUserID, savedUserToken}) => {
     const {singleGameId} = useParams();
     const [game, setGame] = useState({});
-    const [review, setReview] = useState([]);
+    const [reviews, setReviews] = useState([]);
+    const [newReview, setNewReview] = useState(null);
 
     useEffect(() => {
         const getGame = async() => {
@@ -24,21 +25,19 @@ const SingleGameInformation = () => {
     }, [])
 
     useEffect(() => {
-        const getReview = async() => {
+        const getReviews = async() => {
             try {
                 const response = await fetch(`/api/games/${singleGameId}/reviews`)
                 const jsonResponse = await response.json();
                 console.log(jsonResponse)
-                setReview(jsonResponse);
+                setReviews(jsonResponse);
             } catch (error) {
                 throw error;
             }
         };
-        getReview();
-    },[])
+        getReviews();
+    }, [newReview])
     
-    // console.log(game);
-    console.log(`review: ${review}`);
     return (
         <section className="fullSingleGamePage">
 
@@ -51,26 +50,28 @@ const SingleGameInformation = () => {
                 <p>DESCRIPTION: {game.description}</p>
             </div>
 
-
             <div className="singleReview">
                 <h1>GAME REVIEWS</h1>
-                {review.map((reviews,index) => {
+                {reviews.map((review,index) => {
                     return (
-                        <div key={index} className="individualReview">  
-                            <p>Id: {reviews.userId}</p>
-                            <p>GameId: {reviews.gameId}</p>
-                            <p>UserId: {reviews.userId}</p>
-                            <p>rating: {reviews.rating}</p>
-                            <p>summary: {reviews.summary}</p> 
-                        </div>
-                        
-                        )
-                    })}
-                    
-            
+                      <div key={index} className="individualReview">  
+                          <p>Id: {review.id}</p>
+                          <p>GameId: {review.gameId}</p>
+                          <p>UserId: {review.userId}</p>
+                          <p>rating: {review.rating}</p>
+                          <p>summary: {review.summary}</p> 
+                      </div>
+                    )
+                  })}
             </div>
 
-            <br/><br/><br/><WriteReviewForm></WriteReviewForm>
+            <br/><br/><br/>
+            <WriteReviewForm 
+            gameID={singleGameId} 
+            savedUserID={savedUserID} 
+            savedUserToken={savedUserToken}
+            setNewReview={setNewReview}
+            ></WriteReviewForm>
         </section>
     )
 }

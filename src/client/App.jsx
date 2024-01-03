@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 
 import NavBar from "./components/NavBar";
 import ConsoleList from "./components/ConsoleList";
@@ -10,10 +11,12 @@ import Register from './components/Register';
 import './App.css'
 
 function App() {
+
+  const [savedUserID, setSavedUserID] = useState(null);
+  const [savedUserToken, setSavedUserToken] = useState(null);
+
   return (
     <>
-   
-     
       <NavBar></NavBar>
      
       <main>
@@ -30,11 +33,17 @@ function App() {
           
           <Route path='/api/games/:singleGameId' element={
             // <></>
-            <SingleGameInformation></SingleGameInformation>
+            <SingleGameInformation 
+            savedUserID={savedUserID}
+            savedUserToken={savedUserToken}
+            ></SingleGameInformation>
           } />
 
           <Route path='/login' element={
-            <Login></Login>
+            <Login 
+            setSavedUserID={setSavedUserID}
+            setSavedUserToken={setSavedUserToken}
+            ></Login>
           } />
           <Route path='/register' element={
             <Register></Register>

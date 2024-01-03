@@ -54,7 +54,7 @@ const Register = () => {
       </label>
 
       <label>
-        Password: <input required type="text" value={password} onChange={(event) => {
+        Password: <input required type="password" value={password} onChange={(event) => {
           setPassword(event.target.value);
         }} />
       </label>
