@@ -43,6 +43,7 @@ const createReview = async() => {
             {gameId: 1, userId:1, rating: 5, summary: 'n/a'},
             {gameId: 2, userId:2, rating: 4, summary: 'n/a'},
             {gameId: 3, userId:3, rating: 3, summary: 'n/a'},
+            {gameId: 2, userId:3, rating: 1, summary: 'terrible game'}
         ],
     })
 }

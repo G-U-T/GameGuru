@@ -7,6 +7,7 @@ import WriteReviewForm from "./WriteReviewForm";
 const SingleGameInformation = () => {
     const {singleGameId} = useParams();
     const [game, setGame] = useState({});
+    const [review, setReview] = useState([]);
 
     useEffect(() => {
         const getGame = async() => {
@@ -21,17 +22,53 @@ const SingleGameInformation = () => {
         };
         getGame();
     }, [])
+
+    useEffect(() => {
+        const getReview = async() => {
+            try {
+                const response = await fetch(`/api/games/${singleGameId}/reviews`)
+                const jsonResponse = await response.json();
+                console.log(jsonResponse)
+                setReview(jsonResponse);
+            } catch (error) {
+                throw error;
+            }
+        };
+        getReview();
+    },[])
     
+    // console.log(game);
+    console.log(`review: ${review}`);
     return (
-        <section className="singleGame">
-            <h1>hi</h1>
-            <p>TITLE: {game.title}</p>
-            <p>RELEASE DATE: {game.release_date}</p>
-            <p>PLATFORM: {game.platform}</p>
-            <p>GENRE:{game.genre}</p>
-            <p>DESCRIPTION:{game.description}</p>
-            
+        <section >
+
+            <div className="singleGame">
+                <p>{game.title}</p>
+                <img src={game.cover_image_url}></img>
+                <p>RELEASE DATE: {game.release_date}</p>
+                <p>PLATFORM: {game.platform}</p>
+                <p>GENRE: {game.genre}</p>
+                <p>DESCRIPTION: {game.description}</p>
+            </div>
+
             <br/><br/><br/><WriteReviewForm></WriteReviewForm>
+
+            <div className="singleReview">
+                {review.map((reviews,index) => {
+                    return (
+                        <div key={index}>
+                            <p>Id: {reviews.userId}</p>
+                            <p>GameId: {reviews.gameId}</p>
+                            <p>UserId: {reviews.userId}</p>
+                            <p>rating: {reviews.rating}</p>
+                            <p>summary: {reviews.summary}</p>
+                        </div>
+                        
+                        )
+                    })}
+                    
+            
+            </div>
         </section>
     )
 }

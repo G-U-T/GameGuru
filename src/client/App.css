@@ -144,7 +144,15 @@ button, button:active {
 
 
 .singleGame {
-  border: 2px solid red;
+  border: 2px solid blue;
+  width: 400px;
+  margin: 10px;
+}
+
+.singleReview {
+  border: 2px solid blue;
+  width: 400px;
+  margin: 10px;
 }
 
 /* Alphabet list styling */
