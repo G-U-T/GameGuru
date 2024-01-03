@@ -26,7 +26,7 @@ const UserProfile = ({ userId }) => {
     return (
       <div className='profile-container'>
         <h2 className='profile-header'>My Account</h2>
-        <p>Name<b>:</b> {userData.username}</p>
+        <p><b>Name:</b> {userData.username}</p>
         <p><b>Reviews:</b> {userData.reviews}</p>
         <p><b>Comments:</b> {userData.comments}</p>
         <p><b>Favorite Games:</b></p>
