@@ -43,7 +43,7 @@ const SingleGameInformation = ({savedUserID, savedUserToken}) => {
 
             <div className="singleGame">
                 <h1>{game.title}</h1>
-                <img src={game.cover_image_url}></img>
+                <img src={game.cover_image_url} alt={`Game cover for ${game.title}`}></img>
                 <p>RELEASE DATE: {game.release_date}</p>
                 <p>PLATFORM: {game.platform}</p>
                 <p>GENRE: {game.genre}</p>

@@ -51,11 +51,11 @@ const ConsoleGameList = () => {
       {/* Display filtered games */}
       <div className="game-list">
         {filteredGames.map((game) => (
-          <Link to={`/api/games/${game.id}`}>
-          <div key={game.id} className="game-card">
-            <img src={game.cover_image_url} alt={game.title} />
-            <p>{game.title}</p>
-          </div>
+          <Link to={`/api/games/${game.id}`} key={game.id}>
+            <div key={game.id} className="game-card">
+              <img src={game.cover_image_url} alt={game.title} />
+              <p>{game.title}</p>
+            </div>
           </Link>
         ))}
       </div>

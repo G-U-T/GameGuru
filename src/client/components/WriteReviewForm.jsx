@@ -4,6 +4,7 @@ const WriteReviewForm = ({gameID, savedUserID, savedUserToken, setNewReview}) =>
   const [rating, setRating] = useState(5);
   const [summary, setSummary] = useState(``);
   const [responseMessage, setResponseMessage] = useState(null);
+  // console.log(savedUserID);
 
   const submitReview = async(event) => {
     event.preventDefault();
