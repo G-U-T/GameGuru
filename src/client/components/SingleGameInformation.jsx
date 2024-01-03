@@ -40,10 +40,10 @@ const SingleGameInformation = () => {
     // console.log(game);
     console.log(`review: ${review}`);
     return (
-        <section >
+        <section className="fullSingleGamePage">
 
             <div className="singleGame">
-                <p>{game.title}</p>
+                <h1>{game.title}</h1>
                 <img src={game.cover_image_url}></img>
                 <p>RELEASE DATE: {game.release_date}</p>
                 <p>PLATFORM: {game.platform}</p>
@@ -51,17 +51,17 @@ const SingleGameInformation = () => {
                 <p>DESCRIPTION: {game.description}</p>
             </div>
 
-            <br/><br/><br/><WriteReviewForm></WriteReviewForm>
 
             <div className="singleReview">
+                <h1>GAME REVIEWS</h1>
                 {review.map((reviews,index) => {
                     return (
-                        <div key={index}>
+                        <div key={index} className="individualReview">  
                             <p>Id: {reviews.userId}</p>
                             <p>GameId: {reviews.gameId}</p>
                             <p>UserId: {reviews.userId}</p>
                             <p>rating: {reviews.rating}</p>
-                            <p>summary: {reviews.summary}</p>
+                            <p>summary: {reviews.summary}</p> 
                         </div>
                         
                         )
@@ -69,6 +69,8 @@ const SingleGameInformation = () => {
                     
             
             </div>
+
+            <br/><br/><br/><WriteReviewForm></WriteReviewForm>
         </section>
     )
 }
