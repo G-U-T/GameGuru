@@ -2,6 +2,7 @@ import { useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import '../App.css'
 
+import WriteReviewForm from "./WriteReviewForm";
 
 const SingleGameInformation = () => {
     const {singleGameId} = useParams();
@@ -50,6 +51,8 @@ const SingleGameInformation = () => {
                 <p>DESCRIPTION: {game.description}</p>
             </div>
 
+            <br/><br/><br/><WriteReviewForm></WriteReviewForm>
+
             <div className="singleReview">
                 {review.map((reviews,index) => {
                     return (
@@ -66,7 +69,6 @@ const SingleGameInformation = () => {
                     
             
             </div>
-                   
         </section>
     )
 }

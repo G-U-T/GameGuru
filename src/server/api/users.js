@@ -31,6 +31,33 @@ usersRouter.get('/:userID', async (req, res) => {
   }
 });
 
+// Post a new user review
+usersRouter.post('/:userID/reviews', jwtUtils.verifyToken, async (req, res) => {
+  const { userID } = req.params;
+  
+  try {
+    const { gameID, rating, summary } = req.body;
+
+    // Both fields required 
+    if (!rating || !summary) {
+      return res.status(400).json({ error: 'Rating and summary are required' });
+    }
+
+    const newReview = await prisma.review.create({
+      data: {
+        gameId: parseInt(gameID),
+        userId: parseInt(userID),
+        rating: parseInt(rating),
+        summary
+      }
+    })
+    
+    return res.json({"New review": newReview});
+  } catch (error) {
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 //Update a user review 
 usersRouter.patch('/:userID/reviews/:reviewID', jwtUtils.verifyToken, async (req, res) => {
   const { userID, reviewID } = req.params;
