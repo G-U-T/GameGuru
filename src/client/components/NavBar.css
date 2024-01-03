@@ -21,6 +21,7 @@
 
 #title{
   font-family: 'streamer', Helvetica, sans-serif;
+  /* font-size: 2em; */
   color: goldenrod;
   text-shadow: 2px 2px #000000;
   position: absolute;
