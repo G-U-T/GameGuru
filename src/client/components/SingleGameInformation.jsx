@@ -29,7 +29,6 @@ const SingleGameInformation = ({savedUserID, savedUserToken}) => {
             try {
                 const response = await fetch(`/api/games/${singleGameId}/reviews`)
                 const jsonResponse = await response.json();
-                console.log(jsonResponse)
                 setReviews(jsonResponse);
             } catch (error) {
                 throw error;
@@ -38,13 +37,39 @@ const SingleGameInformation = ({savedUserID, savedUserToken}) => {
         getReviews();
     }, [newReview])
     
+    const getUserFromID = async(userID) => {
+      try {
+        const response = await fetch(`/api/users/${userID}`);
+        const data = await response.json();
+        if (response.ok) {
+          return data.username;
+        }
+        return null;
+      } catch (error) {
+        console.error('Error getting user for a review:', error);
+      }
+    }
+
     return (
         <section className="fullSingleGamePage">
 
             <div className="singleGame">
                 <h1>{game.title}</h1>
                 <img src={game.cover_image_url} alt={`Game cover for ${game.title}`}></img>
-                <p>RELEASE DATE: {game.release_date}</p>
+                
+                {
+                  /* Release date is formatted like this:
+                  2007-07-07T00:00:00.000Z
+                  so this code trims it to:
+                  2007-07-07
+                  */
+                  game.release_date ? (
+                    <p>RELEASE DATE: {String(game.release_date).slice(0, String(game.release_date.indexOf('T')))}</p>
+                  ) : (
+                    <p>RELEASE DATE: ...</p>
+                  )
+                }
+
                 <p>PLATFORM: {game.platform}</p>
                 <p>GENRE: {game.genre}</p>
                 <p>DESCRIPTION: {game.description}</p>
@@ -55,11 +80,11 @@ const SingleGameInformation = ({savedUserID, savedUserToken}) => {
                 {reviews.map((review,index) => {
                     return (
                       <div key={index} className="individualReview">  
-                          <p>Id: {review.id}</p>
-                          <p>GameId: {review.gameId}</p>
-                          <p>UserId: {review.userId}</p>
-                          <p>rating: {review.rating}</p>
-                          <p>summary: {review.summary}</p> 
+                          {/* <p>Id: {review.id}</p> */}
+                          {/* <p>GameId: {review.gameId}</p> */}
+                          <p>User ID: {review.userId}</p>
+                          <p>Rating: {review.rating} {review.rating > 1 ? "stars" : "star"}</p>
+                          <p>Summary: {review.summary}</p> 
                       </div>
                     )
                   })}
