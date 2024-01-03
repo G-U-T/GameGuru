@@ -47,7 +47,10 @@ function App() {
             ></Login>
           } />
           <Route path='/register' element={
-            <Register></Register>
+            <Register
+            setSavedUserID={setSavedUserID}
+            setSavedUserToken={setSavedUserToken}
+            ></Register>
           } />
         </Routes>
       </main>
