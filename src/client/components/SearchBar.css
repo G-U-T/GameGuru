@@ -16,17 +16,43 @@ input{
     border: none;
     height: 100%;
     font-size: 1.25em;
-    width: 100;
+    min-width: 100px;
     margin-left: 5px;
     border: none;
 }
-
 input:focus{
-    outline: none;
+  outline: none;
+}
+@media (max-width: 940px) {
+  input {
+    font-size: 1em;
+    transition-property: font-size;
+    transition-duration: 0.2s;
+  }
+}
+@media (max-width: 750px) {
+  .search-bar-container {
+    max-width: 175px;
+    transition-property: max-width;
+    transition-duration: 0.2s;
+  }
+}
+@media (max-width: 650px) {
+  .search-bar-container {
+    max-width: 150px;
+    transition-property: max-width;
+    transition-duration: 0.2s;
+  }
+
+  input {
+    font-size: 0.75em;
+    transition-property: font-size;
+    transition-duration: 0.2s;
+  }
 }
 
- #search-icon{
+#search-icon{
     color: #a3a7c2;
     font-size: 1.25em;
     margin-left: 5px;
- }
+}
