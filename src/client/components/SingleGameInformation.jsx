@@ -6,14 +6,14 @@ import '../App.css'
 const SingleGameInformation = () => {
     const {singleGameId} = useParams();
     const [game, setGame] = useState({});
-    const [review, setReview] = useState({});
+    const [review, setReview] = useState([]);
 
     useEffect(() => {
         const getGame = async() => {
             try {
                 const response = await fetch(`/api/games/${singleGameId}`)
                 const jsonResponse = await response.json();
-                console.log(jsonResponse);
+                // console.log(jsonResponse);
                 setGame(jsonResponse);
             } catch (error) {
                 throw error;
@@ -27,7 +27,7 @@ const SingleGameInformation = () => {
             try {
                 const response = await fetch(`/api/games/${singleGameId}/reviews`)
                 const jsonResponse = await response.json();
-                // console.log(`review object: ${JSON.stringify(jsonResponse)}`)
+                console.log(jsonResponse)
                 setReview(jsonResponse);
             } catch (error) {
                 throw error;
@@ -51,9 +51,19 @@ const SingleGameInformation = () => {
             </div>
 
             <div className="singleReview">
-
-               <p></p>
-               
+                {review.map((reviews,index) => {
+                    return (
+                        <div key={index}>
+                            <p>Id: {reviews.userId}</p>
+                            <p>GameId: {reviews.gameId}</p>
+                            <p>UserId: {reviews.userId}</p>
+                            <p>rating: {reviews.rating}</p>
+                            <p>summary: {reviews.summary}</p>
+                        </div>
+                        
+                        )
+                    })}
+                    
             
             </div>
                    
