@@ -52,17 +52,24 @@ const SingleGameInformation = ({savedUserID, savedUserToken}) => {
 
             <div className="singleReview">
                 <h1>GAME REVIEWS</h1>
-                {reviews.map((review,index) => {
+                {reviews.map((review) => {
                     return (
-                      <div key={index} className="individualReview">  
-                          <p>Id: {review.id}</p>
-                          <p>GameId: {review.gameId}</p>
-                          <p>UserId: {review.userId}</p>
-                          <p>rating: {review.rating}</p>
-                          <p>summary: {review.summary}</p> 
-                      </div>
+                        
+                        //<Link to={`/api/games/${review.gameId}/reviews/${review.id}`}> 
+                        <div key={review.gameId} className="individualReview"> 
+
+                            <p>Id: {review.id}</p>
+                            <p>GameId: {review.gameId}</p>
+                            <p>UserId: {review.userId}</p>
+                            <p>rating: {review.rating}</p>
+                            <p>summary: {review.summary}</p> 
+
+                        </div>
+                        //</Link> 
+                         
+                    
                     )
-                  })}
+                    })}
             </div>
 
             <br/><br/><br/>

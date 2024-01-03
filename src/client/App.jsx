@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import ConsoleList from "./components/ConsoleList";
 import ConsoleGameList from './components/ConsoleGameList';
 import SingleGameInformation from './components/SingleGameInformation';
+import ReviewAndComments from './components/singleReviewAndComments';
 import Login from './components/Login';
 import Register from './components/Register';
 
@@ -31,13 +32,17 @@ function App() {
             <ConsoleGameList></ConsoleGameList>
           } />
           
-          <Route path='/api/games/:singleGameId' element={
+          <Route path='/api/games/:singleGameId/reviews' element={
             // <></>
             <SingleGameInformation 
             savedUserID={savedUserID}
             savedUserToken={savedUserToken}
             ></SingleGameInformation>
           } />
+
+         <Route path='/api/games/:singleGameId/reviews/:reviewId' element={
+          <ReviewAndComments></ReviewAndComments>
+         } />
 
           <Route path='/login' element={
             <Login 
