@@ -52,7 +52,6 @@ router.patch('/:commentID', jwtUtils.verifyToken, async (req, res) => {
 });
 
 // Delete a comment
-// TODO: needs to authenticate the user's token
 router.delete('/:commentID', jwtUtils.verifyToken, async (req, res) => {
   const { commentID } = req.params;
 

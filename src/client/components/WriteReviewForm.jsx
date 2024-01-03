@@ -1,28 +1,37 @@
 import {React, useState} from "react";
 
-const WriteReviewForm = () => {
-
+const WriteReviewForm = ({gameID, savedUserID, savedUserToken, setNewReview}) => {
   const [rating, setRating] = useState(5);
   const [summary, setSummary] = useState(``);
+  const [responseMessage, setResponseMessage] = useState(null);
 
-  // TODO: needs user id for /api/users/${}/reviews
-  // also needs token for authorization
   const submitReview = async(event) => {
     event.preventDefault();
 
     try {
-      const response = await fetch(`/api/users/${1}/reviews`, {
+      const newReview = {
+        gameID: parseInt(gameID), 
+        userId: parseInt(savedUserID),
+        rating,
+        summary,
+      }
+
+      const response = await fetch(`/api/users/${savedUserID}/reviews`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          // 'Authorization': `Bearer ${token}`,
+          'Authorization': `Bearer ${savedUserToken}`,
         },
-        body: JSON.stringify({
-          rating,
-          summary,
-        }),
+        body: JSON.stringify(newReview),
       });
-      console.log(response);
+
+      if (response.ok == true) {
+       setResponseMessage(`Review posted successfully!`);
+       setNewReview(newReview);
+      }
+      else {
+        setResponseMessage(`Error when posting review.`);
+      }
     }
     catch(error) {
       console.log(error);
@@ -45,6 +54,7 @@ const WriteReviewForm = () => {
     </label>
 
     <button onClick={(event) => {submitReview(event)}}>Submit Review</button>
+    {responseMessage && <p>{responseMessage}</p>}
   </form>
 }
 
