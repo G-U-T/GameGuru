@@ -6,6 +6,7 @@ import ConsoleGameList from './components/ConsoleGameList';
 import SingleGameInformation from './components/SingleGameInformation';
 import Login from './components/Login';
 import Register from './components/Register';
+import HomePage from './components/HomePage';
 
 import './App.css'
 
@@ -19,7 +20,7 @@ function App() {
       <main>
         <Routes>
           <Route path='/' element={
-            <></>
+            <HomePage></HomePage>
           } />
           <Route path='/api/consoles' element={
             <ConsoleList></ConsoleList>
