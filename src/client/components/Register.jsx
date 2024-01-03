@@ -3,7 +3,7 @@ import '../App.css';
 
 const VALID_SUCCESS_MESSAGE = `User registered successfully`;
 
-const Register = () => {
+const Register = ({setSavedUserID, setSavedUserToken}) => {
   const [username, setUsername] = useState(``);
   const [password, setPassword] = useState(``);
 
@@ -37,6 +37,22 @@ const Register = () => {
       const result = await response.json();
       setSuccessMessage(result.message);
       setErrorMessage(null);
+
+      const login_response = await fetch(`/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username,
+          password,
+        }),
+      });
+      const login_result = await login_response.json();
+      if (login_result.success) {
+        setSavedUserID(login_result.userId);
+        setSavedUserToken(login_result.token);
+      }
     }
     catch(error) {
       setErrorMessage(error.message);
