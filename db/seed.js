@@ -38,12 +38,75 @@ const createGame = async() => {
 const createReview = async() => {
     console.log('creating review');
 
+    const somaanUserInfo = await prisma.user.findUnique({
+        where: {username: 'Somaan'},
+    });
+    const joshuaUserInfo = await prisma.user.findUnique({
+        where: {username: 'Joshua'},
+    });
+    const salvadorUserInfo = await prisma.user.findUnique({
+        where: {username: 'Salvador'},
+    });
+    const grahamUserInfo = await prisma.user.findUnique({
+        where: {username: 'Graham'},
+    });
+    
+/* if usernames are wanted, need to change userid schema from int to string*/ 
+    const Somaan = somaanUserInfo.id;
+    const Joshua = joshuaUserInfo.id;
+    const Salvador = salvadorUserInfo.id;
+    const Graham = grahamUserInfo.id;
+
     await prisma.review.createMany({
         data: [
-            {gameId: 1, userId:1, rating: 5, summary: 'n/a'},
-            {gameId: 2, userId:2, rating: 4, summary: 'n/a'},
-            {gameId: 3, userId:3, rating: 3, summary: 'n/a'},
-            {gameId: 2, userId:3, rating: 1, summary: 'terrible game'}
+            {gameId: 1, userId: Somaan, rating: 1, summary: 'terrible game'},
+            {gameId: 1, userId: Joshua, rating: 3, summary: 'okay game'},
+            {gameId: 1, userId: Salvador, rating: 4, summary: 'good game'},
+            {gameId: 1, userId: Graham, rating: 5, summary: 'great game'},
+            {gameId: 2, userId: Somaan, rating: 1, summary: 'terrible game'},
+            {gameId: 2, userId: Joshua, rating: 3, summary: 'okay game'},
+            {gameId: 2, userId: Salvador, rating: 4, summary: 'good game'},
+            {gameId: 2, userId: Graham, rating: 5, summary: 'great game'},
+            {gameId: 3, userId: Somaan, rating: 1, summary: 'terrible game'},
+            {gameId: 3, userId: Joshua, rating: 3, summary: 'okay game'},
+            {gameId: 3, userId: Salvador, rating: 4, summary: 'good game'},
+            {gameId: 3, userId: Graham, rating: 5, summary: 'great game'},
+            {gameId: 4, userId: Somaan, rating: 1, summary: 'terrible game'},
+            {gameId: 4, userId: Joshua, rating: 3, summary: 'okay game'},
+            {gameId: 4, userId: Salvador, rating: 4, summary: 'good game'},
+            {gameId: 4, userId: Graham, rating: 5, summary: 'great game'},
+            {gameId: 5, userId: Somaan, rating: 1, summary: 'terrible game'},
+            {gameId: 5, userId: Joshua, rating: 3, summary: 'okay game'},
+            {gameId: 5, userId: Salvador, rating: 4, summary: 'good game'},
+            {gameId: 5, userId: Graham, rating: 5, summary: 'great game'},
+            {gameId: 6, userId: Somaan, rating: 1, summary: 'terrible game'},
+            {gameId: 6, userId: Joshua, rating: 3, summary: 'okay game'},
+            {gameId: 6, userId: Salvador, rating: 4, summary: 'good game'},
+            {gameId: 6, userId: Graham, rating: 5, summary: 'great game'},
+            {gameId: 7, userId: Somaan, rating: 1, summary: 'terrible game'},
+            {gameId: 7, userId: Joshua, rating: 3, summary: 'okay game'},
+            {gameId: 7, userId: Salvador, rating: 4, summary: 'good game'},
+            {gameId: 7, userId: Graham, rating: 5, summary: 'great game'},
+            {gameId: 8, userId: Somaan, rating: 1, summary: 'terrible game'},
+            {gameId: 8, userId: Joshua, rating: 3, summary: 'okay game'},
+            {gameId: 8, userId: Salvador, rating: 4, summary: 'good game'},
+            {gameId: 8, userId: Graham, rating: 5, summary: 'great game'},
+            {gameId: 9, userId: Somaan, rating: 1, summary: 'terrible game'},
+            {gameId: 9, userId: Joshua, rating: 3, summary: 'okay game'},
+            {gameId: 9, userId: Salvador, rating: 4, summary: 'good game'},
+            {gameId: 9, userId: Graham, rating: 5, summary: 'great game'},
+            {gameId: 10, userId: Somaan, rating: 1, summary: 'terrible game'},
+            {gameId: 10, userId: Joshua, rating: 3, summary: 'okay game'},
+            {gameId: 10, userId: Salvador, rating: 4, summary: 'good game'},
+            {gameId: 10, userId: Graham, rating: 5, summary: 'great game'},
+            {gameId: 11, userId: Somaan, rating: 1, summary: 'terrible game'},
+            {gameId: 11, userId: Joshua, rating: 3, summary: 'okay game'},
+            {gameId: 11, userId: Salvador, rating: 4, summary: 'good game'},
+            {gameId: 11, userId: Graham, rating: 5, summary: 'great game'},
+            {gameId: 12, userId: Somaan, rating: 1, summary: 'terrible game'},
+            {gameId: 12, userId: Joshua, rating: 3, summary: 'okay game'},
+            {gameId: 12, userId: Salvador, rating: 4, summary: 'good game'},
+            {gameId: 12, userId: Graham, rating: 5, summary: 'great game'}
         ],
     })
 }

@@ -30,8 +30,21 @@ router.get("/:gameId/reviews", async (req, res) => {
         }
     );
     res.send(reviews);
+})
 
-   
+/* ------------------ get reviews by id ------------------*/
+router.get("/:gameId/reviews/:reviewId", async (req, res) => {
+    const reviewId = parseInt(req.params.reviewId)
+
+    const review = await prisma.review.findUnique(
+        {
+            where: {
+               
+                id: reviewId
+            },
+        }
+    );
+    res.send(review);
 })
 
 module.exports = router;

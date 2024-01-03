@@ -2,7 +2,7 @@ import {React, useState} from "react";
 import UserProfile from "./UserProfile";
 import '../App.css';
 
-const Login = () => {
+const Login = ({setSavedUserID, setSavedUserToken}) => {
   const [username, setUsername] = useState(``);
   const [password, setPassword] = useState(``);
 
@@ -26,12 +26,13 @@ const Login = () => {
         }),
       });
       const result = await response.json();
-      console.log('Result after login:', result);
       if (response.ok) {
         setSuccessMessage('Logged in!');
         setIsLoggedIn(true);
+        
+        setSavedUserID(result.userId);
         setUserId(result.userId);
-        console.log('UserID after login:', result.userId);
+        setSavedUserToken(result.token);
       } else {
         setSuccessMessage(null);
       }
@@ -54,7 +55,7 @@ const Login = () => {
       </label>
 
       <label>
-        Password: <input required type="text" value={password} onChange={(event) => {
+        Password: <input required type="password" value={password} onChange={(event) => {
           setPassword(event.target.value);
         }} />
       </label>

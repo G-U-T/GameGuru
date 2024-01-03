@@ -4,10 +4,11 @@ import '../App.css'
 
 import WriteReviewForm from "./WriteReviewForm";
 
-const SingleGameInformation = () => {
+const SingleGameInformation = ({savedUserID, savedUserToken}) => {
     const {singleGameId} = useParams();
     const [game, setGame] = useState({});
-    const [review, setReview] = useState([]);
+    const [reviews, setReviews] = useState([]);
+    const [newReview, setNewReview] = useState(null);
 
     useEffect(() => {
         const getGame = async() => {
@@ -24,51 +25,78 @@ const SingleGameInformation = () => {
     }, [])
 
     useEffect(() => {
-        const getReview = async() => {
+        const getReviews = async() => {
             try {
                 const response = await fetch(`/api/games/${singleGameId}/reviews`)
                 const jsonResponse = await response.json();
-                console.log(jsonResponse)
-                setReview(jsonResponse);
+                setReviews(jsonResponse);
             } catch (error) {
                 throw error;
             }
         };
-        getReview();
-    },[])
+        getReviews();
+    }, [newReview])
     
-    // console.log(game);
-    console.log(`review: ${review}`);
+    const getUserFromID = async(userID) => {
+      try {
+        const response = await fetch(`/api/users/${userID}`);
+        const data = await response.json();
+        if (response.ok) {
+          return data.username;
+        }
+        return null;
+      } catch (error) {
+        console.error('Error getting user for a review:', error);
+      }
+    }
+
     return (
-        <section >
+        <section className="fullSingleGamePage">
 
             <div className="singleGame">
-                <p>{game.title}</p>
-                <img src={game.cover_image_url}></img>
-                <p>RELEASE DATE: {game.release_date}</p>
+                <h1>{game.title}</h1>
+                <img src={game.cover_image_url} alt={`Game cover for ${game.title}`}></img>
+                
+                {
+                  /* Release date is formatted like this:
+                  2007-07-07T00:00:00.000Z
+                  so this code trims it to:
+                  2007-07-07
+                  */
+                  game.release_date ? (
+                    <p>RELEASE DATE: {String(game.release_date).slice(0, String(game.release_date.indexOf('T')))}</p>
+                  ) : (
+                    <p>RELEASE DATE: ...</p>
+                  )
+                }
+
                 <p>PLATFORM: {game.platform}</p>
                 <p>GENRE: {game.genre}</p>
                 <p>DESCRIPTION: {game.description}</p>
             </div>
 
-            <br/><br/><br/><WriteReviewForm></WriteReviewForm>
-
             <div className="singleReview">
-                {review.map((reviews,index) => {
+                <h1>GAME REVIEWS</h1>
+                {reviews.map((review,index) => {
                     return (
-                        <div key={index}>
-                            <p>Id: {reviews.userId}</p>
-                            <p>GameId: {reviews.gameId}</p>
-                            <p>UserId: {reviews.userId}</p>
-                            <p>rating: {reviews.rating}</p>
-                            <p>summary: {reviews.summary}</p>
-                        </div>
-                        
-                        )
-                    })}
-                    
-            
+                      <div key={index} className="individualReview">  
+                          {/* <p>Id: {review.id}</p> */}
+                          {/* <p>GameId: {review.gameId}</p> */}
+                          <p>User ID: {review.userId}</p>
+                          <p>Rating: {review.rating} {review.rating > 1 ? "stars" : "star"}</p>
+                          <p>Summary: {review.summary}</p> 
+                      </div>
+                    )
+                  })}
             </div>
+
+            <br/><br/><br/>
+            <WriteReviewForm 
+            gameID={singleGameId} 
+            savedUserID={savedUserID} 
+            savedUserToken={savedUserToken}
+            setNewReview={setNewReview}
+            ></WriteReviewForm>
         </section>
     )
 }
