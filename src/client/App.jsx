@@ -8,7 +8,7 @@ import SingleGameInformation from './components/SingleGameInformation';
 import Login from './components/Login';
 import Register from './components/Register';
 import HomePage from './components/HomePage';
-
+import SearchResults from './components/searchresults';
 import './App.css'
 
 function App() {
@@ -53,7 +53,11 @@ function App() {
             setSavedUserToken={setSavedUserToken}
             ></Register>
           } />
-        </Routes>
+          <Route path='/searchresults' element={
+            <SearchResults/>
+          }></Route>
+          </Routes>
+      
       </main>
     </>
   );
