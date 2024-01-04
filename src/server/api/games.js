@@ -39,7 +39,7 @@ router.get("/:gameId/reviews/:reviewId", async (req, res) => {
     const review = await prisma.review.findUnique(
         {
             where: {
-               
+
                 id: reviewId
             },
         }
@@ -48,5 +48,17 @@ router.get("/:gameId/reviews/:reviewId", async (req, res) => {
 })
 
 /* get comments by reviewId*/
+router.get("/:gameId/reviews/:reviewId/comments", async (req, res) => {
+    const reviewId = parseInt(req.params.reviewId)
+
+    const comments = await prisma.comment.findMany(
+        {
+            where: {
+                reviewsId:reviewId
+            },
+        }
+    );
+    res.send(comments)
+})
 
 module.exports = router;
