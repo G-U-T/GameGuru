@@ -35,6 +35,7 @@ const Login = ({setSavedUserID, setSavedUserToken}) => {
         setSavedUserToken(result.token);
       } else {
         setSuccessMessage(null);
+        setErrorMessage("Couldn't log in.");
       }
     } catch (error) {
       setSuccessMessage(null);
