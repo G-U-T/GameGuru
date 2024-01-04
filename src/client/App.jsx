@@ -33,7 +33,6 @@ function App() {
           } />
           
           <Route path='/api/games/:singleGameId/reviews' element={
-            // <></>
             <SingleGameInformation 
             savedUserID={savedUserID}
             savedUserToken={savedUserToken}

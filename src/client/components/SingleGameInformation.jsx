@@ -1,6 +1,7 @@
 import { useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import '../App.css'
+import { Link } from 'react-router-dom';
 
 import WriteReviewForm from "./WriteReviewForm";
 
@@ -52,10 +53,9 @@ const SingleGameInformation = ({savedUserID, savedUserToken}) => {
 
             <div className="singleReview">
                 <h1>GAME REVIEWS</h1>
-                {reviews.map((review) => {
-                    return (
+                {reviews.map((review) => (
                         
-                        //<Link to={`/api/games/${review.gameId}/reviews/${review.id}`}> 
+                        <Link to={`/api/games/${review.gameId}/reviews/${review.id}`}> 
                         <div key={review.gameId} className="individualReview"> 
 
                             <p>Id: {review.id}</p>
@@ -65,11 +65,8 @@ const SingleGameInformation = ({savedUserID, savedUserToken}) => {
                             <p>summary: {review.summary}</p> 
 
                         </div>
-                        //</Link> 
-                         
-                    
-                    )
-                    })}
+                        </Link> 
+                    ))}
             </div>
 
             <br/><br/><br/>
