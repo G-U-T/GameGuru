@@ -1,6 +1,7 @@
 import { useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import '../App.css'
+import { Link } from 'react-router-dom';
 
 import WriteReviewForm from "./WriteReviewForm";
 
@@ -27,6 +28,9 @@ const SingleGameInformation = ({savedUserID, savedUserToken}) => {
 
     useEffect(() => {
         const getReviews = async() => {
+
+
+
           try {
             const response = await fetch(`/api/games/${singleGameId}/reviews`)
             const jsonResponse = await response.json();
@@ -34,6 +38,7 @@ const SingleGameInformation = ({savedUserID, savedUserToken}) => {
           } catch (error) {
             throw error;
           }
+
         };
 
         // Makes a "dictionary" where for all users
@@ -83,17 +88,22 @@ const SingleGameInformation = ({savedUserID, savedUserToken}) => {
 
             <div className="singleReview">
                 <h1>GAME REVIEWS</h1>
-                {reviews.map((review,index) => {
-                    return (
-                      <div key={index} className="individualReview">  
-                          {/* <p>Id: {review.id}</p> */}
-                          {/* <p>GameId: {review.gameId}</p> */}
-                          <p>User: {IDsToUsernames[review.userId]}</p>
-                          <p>Rating: {'⭐'.repeat(review.rating)}</p>
-                          <p>Summary: "{review.summary}"</p> 
-                      </div>
-                    )
-                  })}
+
+                {reviews.map((review) => (
+                        
+                        <Link to={`/api/games/${review.gameId}/reviews/${review.id}`}> 
+                        <div key={review.gameId} className="individualReview"> 
+
+                            {/* <p>Id: {review.id}</p> */}
+                            {/* <p>GameId: {review.gameId}</p> */}
+                            <p>User: {IDsToUsernames[review.userId]}</p>
+                            <p>Rating: {'⭐'.repeat(review.rating)}</p>
+                            <p>Summary: "{review.summary}"</p> 
+
+                        </div>
+                        </Link> 
+                    ))}
+
             </div>
 
             <br/><br/><br/>
