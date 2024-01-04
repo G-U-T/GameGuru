@@ -78,3 +78,7 @@ input:focus{
     outline: none !important;
 }
 
+form{
+    border: none !important;
+    border-color: #2c354d !important;
+}
