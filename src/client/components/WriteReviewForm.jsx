@@ -44,7 +44,7 @@ const WriteReviewForm = ({gameID, savedUserID, savedUserToken, setNewReview}) =>
       <h3>Write a review:</h3>
 
       <label className="row-flex">
-        Rating ({rating} {(rating > 1) ? `stars` : `star`}): <input required type="range" min={1} max={5} value={rating} onChange={(event) => {
+        Rating ({'⭐'.repeat(rating)}): <input required type="range" min={1} max={5} value={rating} onChange={(event) => {
           setRating(event.target.value);
         }} />
       </label>

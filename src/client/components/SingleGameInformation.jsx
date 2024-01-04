@@ -89,8 +89,8 @@ const SingleGameInformation = ({savedUserID, savedUserToken}) => {
                           {/* <p>Id: {review.id}</p> */}
                           {/* <p>GameId: {review.gameId}</p> */}
                           <p>User: {IDsToUsernames[review.userId]}</p>
-                          <p>Rating: {review.rating} {review.rating > 1 ? "stars" : "star"}</p>
-                          <p>Summary: {review.summary}</p> 
+                          <p>Rating: {'⭐'.repeat(review.rating)}</p>
+                          <p>Summary: "{review.summary}"</p> 
                       </div>
                     )
                   })}
