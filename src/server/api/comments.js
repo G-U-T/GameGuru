@@ -23,7 +23,7 @@ router.get('/:commentID', async(req, res) => {
   }
 });
 
-router.get('/reviews/:reviewID', jwtUtils.verifyToken, async(req, res) => {
+router.get('/reviews/:reviewID', async(req, res) => {
   const { reviewID } = req.params;
 
   try {
