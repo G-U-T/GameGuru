@@ -30,7 +30,7 @@ const SingleGameInformation = ({savedUserID, savedUserToken}) => {
             try {
                 const response = await fetch(`/api/games/${singleGameId}/reviews`)
                 const jsonResponse = await response.json();
-                console.log(jsonResponse)
+                // console.log(jsonResponse)
                 setReviews(jsonResponse);
             } catch (error) {
                 throw error;

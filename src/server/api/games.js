@@ -32,7 +32,7 @@ router.get("/:gameId/reviews", async (req, res) => {
     res.send(reviews);
 })
 
-/* ------------------ get reviews by id ------------------*/
+/* ------------------ get reviews by reviewId ------------------*/
 router.get("/:gameId/reviews/:reviewId", async (req, res) => {
     const reviewId = parseInt(req.params.reviewId)
 
@@ -46,5 +46,7 @@ router.get("/:gameId/reviews/:reviewId", async (req, res) => {
     );
     res.send(review);
 })
+
+/* get comments by reviewId*/
 
 module.exports = router;
