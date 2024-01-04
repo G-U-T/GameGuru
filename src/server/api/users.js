@@ -5,6 +5,15 @@ const prisma = new PrismaClient();
 const usersRouter = express.Router();
 const jwtUtils = require('../utils');
 
+usersRouter.get('/', async(req, res) => {
+  try {
+    const users = await prisma.user.findMany();
+    res.send(users);
+  } catch (error) {
+    return res.status(500).json({error});
+  }
+});
+
 // Get User Profile, needed to use ID 
 usersRouter.get('/:userID', async (req, res) => {
   const { userID } = req.params;
