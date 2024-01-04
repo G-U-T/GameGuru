@@ -26,17 +26,16 @@ const Login = ({setSavedUserID, setSavedUserToken}) => {
         }),
       });
       const result = await response.json();
-      console.log('Result after login:', result);
       if (response.ok) {
         setSuccessMessage('Logged in!');
         setIsLoggedIn(true);
         
         setSavedUserID(result.userId);
         setUserId(result.userId);
-        console.log('UserID after login:', result.userId);
         setSavedUserToken(result.token);
       } else {
         setSuccessMessage(null);
+        setErrorMessage("Couldn't log in.");
       }
     } catch (error) {
       setSuccessMessage(null);
@@ -67,7 +66,7 @@ const Login = ({setSavedUserID, setSavedUserToken}) => {
 
     {errorMessage && <p>ERROR: {errorMessage}</p>}
     {successMessage && <p>SUCCESS: {successMessage}</p>}
-    {/* {isLoggedIn && <UserProfile userId={userId} />} */}
+    {isLoggedIn && <UserProfile userId={userId} />}
   </>
   );
 }

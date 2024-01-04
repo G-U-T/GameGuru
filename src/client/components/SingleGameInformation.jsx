@@ -10,6 +10,7 @@ const SingleGameInformation = ({savedUserID, savedUserToken}) => {
     const [game, setGame] = useState({});
     const [reviews, setReviews] = useState([]);
     const [newReview, setNewReview] = useState(null);
+    const [IDsToUsernames, setIDsToUsernames] = useState({});
 
     useEffect(() => {
         const getGame = async() => {
@@ -27,25 +28,59 @@ const SingleGameInformation = ({savedUserID, savedUserToken}) => {
 
     useEffect(() => {
         const getReviews = async() => {
-            try {
-                const response = await fetch(`/api/games/${singleGameId}/reviews`)
-                const jsonResponse = await response.json();
-                // console.log(jsonResponse)
-                setReviews(jsonResponse);
-            } catch (error) {
-                throw error;
-            }
+
+
+
+          try {
+            const response = await fetch(`/api/games/${singleGameId}/reviews`)
+            const jsonResponse = await response.json();
+            setReviews(jsonResponse);
+          } catch (error) {
+            throw error;
+          }
+
         };
+
+        // Makes a "dictionary" where for all users
+        // the key is the ID and the value is the username.
+        const getUsers = async() => {
+          try {
+            const response = await fetch(`/api/users`);
+            const result = await response.json();
+            if (response.ok) {
+              result.forEach((user) => {
+                IDsToUsernames[user.id] = user.username;
+              });
+            }
+          } catch (error) {
+            console.error('Error getting users:', error);
+          }
+        }
+
         getReviews();
+        getUsers();
     }, [newReview])
-    
+
     return (
         <section className="fullSingleGamePage">
 
             <div className="singleGame">
                 <h1>{game.title}</h1>
-                <img src={game.cover_image_url}></img>
-                <p>RELEASE DATE: {game.release_date}</p>
+                <img src={game.cover_image_url} alt={`Game cover for ${game.title}`}></img>
+                
+                {
+                  /* Release date is formatted like this:
+                  2007-07-07T00:00:00.000Z
+                  so this code trims it to:
+                  2007-07-07
+                  */
+                  game.release_date ? (
+                    <p>RELEASE DATE: {String(game.release_date).slice(0, String(game.release_date.indexOf('T')))}</p>
+                  ) : (
+                    <p>RELEASE DATE: ...</p>
+                  )
+                }
+
                 <p>PLATFORM: {game.platform}</p>
                 <p>GENRE: {game.genre}</p>
                 <p>DESCRIPTION: {game.description}</p>
@@ -53,20 +88,22 @@ const SingleGameInformation = ({savedUserID, savedUserToken}) => {
 
             <div className="singleReview">
                 <h1>GAME REVIEWS</h1>
+
                 {reviews.map((review) => (
                         
                         <Link to={`/api/games/${review.gameId}/reviews/${review.id}`}> 
                         <div key={review.gameId} className="individualReview"> 
 
-                            <p>Id: {review.id}</p>
-                            <p>GameId: {review.gameId}</p>
-                            <p>UserId: {review.userId}</p>
-                            <p>rating: {review.rating}</p>
-                            <p>summary: {review.summary}</p> 
+                            {/* <p>Id: {review.id}</p> */}
+                            {/* <p>GameId: {review.gameId}</p> */}
+                            <p>User: {IDsToUsernames[review.userId]}</p>
+                            <p>Rating: {'⭐'.repeat(review.rating)}</p>
+                            <p>Summary: "{review.summary}"</p> 
 
                         </div>
                         </Link> 
                     ))}
+
             </div>
 
             <br/><br/><br/>

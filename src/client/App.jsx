@@ -8,7 +8,8 @@ import SingleGameInformation from './components/SingleGameInformation';
 import ReviewAndComments from './components/singleReviewAndComments';
 import Login from './components/Login';
 import Register from './components/Register';
-
+import HomePage from './components/HomePage';
+import SearchResults from './components/searchresults';
 import './App.css'
 
 function App() {
@@ -21,9 +22,10 @@ function App() {
       <NavBar></NavBar>
      
       <main>
+        
         <Routes>
           <Route path='/' element={
-            <></>
+            <HomePage></HomePage>
           } />
           <Route path='/api/consoles' element={
             <ConsoleList></ConsoleList>
@@ -50,9 +52,16 @@ function App() {
             ></Login>
           } />
           <Route path='/register' element={
-            <Register></Register>
+            <Register
+            setSavedUserID={setSavedUserID}
+            setSavedUserToken={setSavedUserToken}
+            ></Register>
           } />
-        </Routes>
+          <Route path='/searchresults' element={
+            <SearchResults/>
+          }></Route>
+          </Routes>
+      
       </main>
     </>
   );

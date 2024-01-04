@@ -38,24 +38,29 @@ const WriteReviewForm = ({gameID, savedUserID, savedUserToken, setNewReview}) =>
     }
   }
 
-  return <form className="column-flex">
-    <h3>Write a review:</h3>
+  return <>
+    {savedUserID ? (
+    <form className="column-flex" style={{justifyContent: "normal"}}>
+      <h3>Write a review:</h3>
 
-    <label>
-      Rating ({rating} {(rating > 1) ? `stars` : `star`}): <input required type="range" min={1} max={5} value={rating} onChange={(event) => {
-        setRating(event.target.value);
-      }} />
-    </label>
+      <label className="row-flex">
+        Rating ({'⭐'.repeat(rating)}): <input required type="range" min={1} max={5} value={rating} onChange={(event) => {
+          setRating(event.target.value);
+        }} />
+      </label>
 
-    <label>
-      Summary: <textarea onChange={(event) => {
-        setSummary(event.target.value);
-      }}></textarea>
-    </label>
+      <label className="row-flex">
+        Summary: <textarea onChange={(event) => {
+          setSummary(event.target.value);
+        }}></textarea>
+      </label>
 
-    <button onClick={(event) => {submitReview(event)}}>Submit Review</button>
-    {responseMessage && <p>{responseMessage}</p>}
-  </form>
+      <button onClick={(event) => {submitReview(event)}}>Submit Review</button>
+      {responseMessage && <p>{responseMessage}</p>}
+    </form>) : (
+    <h2>Log in to write a review!</h2>
+    )}
+  </>
 }
 
 export default WriteReviewForm;

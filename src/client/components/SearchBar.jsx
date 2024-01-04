@@ -1,36 +1,57 @@
 import React, {useState, useEffect} from "react";
 import {FaSearch} from 'react-icons/fa';
+import {Form, useNavigate}  from 'react-router-dom';
 import './SearchBar.css';
+
+
+
+
+
+
 export const SearchBar = () => {
     const [input, setInput] = useState('');
-    
-    const fetchData = async () => {
-        const response = await fetch(`/api/consoles/${input}`);
+    const [searchResults, setSearchResults] = useState([]);
+    const navigate = useNavigate();
+
+    const fetchData = async (event) => {
+       event.preventDefault();
        
+        const lowerCaseInput = input.toLowerCase();
+        console.log(lowerCaseInput);
+        const response = await fetch(`/api/search/${lowerCaseInput}`);
+       
+        
         const result = await response.json();
         console.log(result);
+       
+     
+        
+        setSearchResults(result);
+        
+        navigate(`/searchresults`, { state: { result } });
     }
 
-    const handleSearch = (e) => {
+
+    const onSearchBarChange = (e) => {
         setInput(e.target.value);
     }
-
-    useEffect(() => {
-        if(input) {
-            fetchData();
-        }
-    }, [input]);
+    
 
         return(
     <>
-      <div className="input-wrapper">
-        <FaSearch  id="search-icon"/>
-        <input 
-        type="text" 
-        placeholder="Type to search..." 
-        value={input} 
-        onChange={(e) => handleSearch(e)} />    
-      </div>
+        <div className="input-container">
+        <div className="input-wrapper">
+         <form onSubmit={fetchData}>
+            <FaSearch  id="search-icon"/>
+            <input 
+            type="text" 
+            placeholder="Type to search..." 
+            value={input} 
+            onChange={(e) => onSearchBarChange(e)} /> 
+        <button className="submit-button" >submit</button>  
+     </form> 
+     </div>
+        </div>
     </>
   );
        

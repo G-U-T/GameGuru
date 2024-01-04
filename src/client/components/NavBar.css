@@ -1,6 +1,6 @@
 
 #navbar {
-  position: fixed;
+  position: absolute;
   left: 0px;
   top: 0px;
   width: 100%;
@@ -21,6 +21,7 @@
 
 #title{
   font-family: 'streamer', Helvetica, sans-serif;
+  /* font-size: 2em; */
   color: goldenrod;
   text-shadow: 2px 2px #000000;
   position: absolute;
@@ -29,18 +30,40 @@
   z-index: 1;
 }
 
-#navbar > img {
+#navbar img {
   filter: invert(98%) sepia(2%) saturate(1866%) hue-rotate(35deg) brightness(101%) contrast(102%);
   margin-right: 10px;
+}
+#navbar-links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  justify-content: center;
+  align-items: center;
 }
 #navbar-link {
  font-family: 'byte';
   text-decoration: none;
-  font-size: 1.5rem;
   color: inherit;
   font-size: 2em;
   margin-bottom: 0.5rem;
+}
+@media (max-width: 940px) {
+  #navbar img {
+    scale: 0.75;
+  }
 
+  #navbar-link {
+    font-size: 1.75em;
+  }
+}
+@media (max-width: 650px) {
+  #navbar-links {
+    max-width: 200px;
+    transition-property: max-width;
+    transition-duration: 0.2s;
+  }
 }
 
 
