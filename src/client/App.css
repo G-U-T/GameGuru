@@ -94,6 +94,7 @@ button, button:active {
 }
 
 .gallery a {
+  font-family: 'byte', sans-serif;
   text-decoration: none;
   color: inherit;
   font-size: 1.2rem;
