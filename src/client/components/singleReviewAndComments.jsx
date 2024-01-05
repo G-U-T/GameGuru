@@ -40,7 +40,7 @@ const ReviewAndComments = ({savedUserID, savedUserToken}) => {
         getComments();
        }, [newComment])
 
-    }, [])
+  
 
     useEffect(() => {
         const getUsers = async() => {
