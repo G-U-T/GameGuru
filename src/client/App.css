@@ -37,9 +37,9 @@ input {
 
   padding: 0.3rem;
 }
-form input {
+/* form input {
   border: 2px solid #404973;
-}
+} */
 /* Longer text input (for things like reviews). */
 textarea {
   min-width: 300px;
@@ -144,7 +144,7 @@ button, button:active {
   color: #a3a7c2;
 }
 
-/*  usable fonts */
+
 
 
 

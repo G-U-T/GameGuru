@@ -38,6 +38,18 @@ const createGame = async() => {
             {title: 'MARIO 1', release_date: new Date('2007-07-07'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/mario1.jpg'},
             {title: 'MARIO 2', release_date: new Date('2008-08-08'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/mario2.jpg'},
             {title: 'MARIO 3', release_date: new Date('2009-09-09'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/mario3.jpg'},
+            {title: 'PAPER MARIO ', release_date: new Date('2011-08-11'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/PAPERMARIO.jpg'},
+            {title: 'NEW YOSHI ISLAND ', release_date: new Date('2008-08-08'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/YOSHI.jpg'},
+            {title: 'SUPER MARIO PARTY', release_date: new Date('2018-12-15'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/MARIOPARTY.jpg'},
+            {title: 'METROID PRIME', release_date: new Date('2002-11-18'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/MET.jpg'},
+            {title: 'GOLDEN EYE 007', release_date: new Date('1997-01-27'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/007.jpg'},
+            {title: 'SMASH BROS.', release_date: new Date('2009-09-09'), platform: 'Nintendo', genre:'fighting', description:'n/a', cover_image_url: '/SMASH64.jpg'},
+            {title: 'POKEMON SNAP', release_date: new Date('2007-07-07'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/SNAP.jpg'},
+            {title: 'ZACK AND WIKI', release_date: new Date('2008-08-08'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/WIKI.jpg'},
+            {title: 'WII SPORTS', release_date: new Date('2009-09-09'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/SPORTS.jpg'},
+            {title: 'GUITAR HERO III', release_date: new Date('2007-07-07'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/HERO3.jpg'},
+            {title: 'SUPER GHOST N GOULS', release_date: new Date('2008-08-08'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/GHOST.jpg'},
+            {title: 'RED STEEL', release_date: new Date('2009-09-09'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/STEEL.jpg'},
             {title: 'Grand Theft Auto 3', release_date: new Date('2010-10-10'), platform: 'PC', genre:'open world', description:'n/a', cover_image_url: '/GTA3.jpg'},
             {title: 'Grand Theft Auto 4', release_date: new Date('2011-11-11'), platform: 'PC', genre:'open world', description:'n/a', cover_image_url: '/GTA4.jpg'},
             {title: 'Grand Theft Auto 5', release_date: new Date('2012-12-12'), platform: 'PC', genre:'open world', description:'n/a', cover_image_url: '/GTA5.jpg'},
@@ -46,6 +58,12 @@ const createGame = async() => {
             {title: 'XCOM 2', release_date: new Date('2012-12-12'), platform: 'PC', genre:'open world', description:'n/a', cover_image_url: '/xcom2.jpg'},
             {title: 'Baldurs Gate 3', release_date: new Date('2012-12-12'), platform: 'PC', genre:'open world', description:'n/a', cover_image_url: '/baldurs.jpg'},
             {title: 'Elden Ring', release_date: new Date('2012-12-12'), platform: 'PC', genre:'open world', description:'n/a', cover_image_url: '/eldenring.jpg'},
+        
+        
+        
+        
+        
+        
         ],
     })
 }

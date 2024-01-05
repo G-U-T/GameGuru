@@ -27,7 +27,7 @@ const NavBar = () => {
         
         <div className="search-bar-container">
         <SearchBar />
-        <div className="search-results"></div>
+        <div></div>
 
       </div>
 
