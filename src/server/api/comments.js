@@ -43,7 +43,8 @@ router.post('/reviews/:reviewID', jwtUtils.verifyToken, async(req,res) => {
   const { reviewID } = req.params;
 
   try {
-    const { comment_text } = req.body;
+    const { comment_text, userId } = req.body;
+  
 
     // Comment text required 
     if (!comment_text) {
@@ -60,7 +61,7 @@ router.post('/reviews/:reviewID', jwtUtils.verifyToken, async(req,res) => {
     const newComment = await prisma.comment.create({
       data: {
         reviewsId: parseInt(reviewID),
-        userId: reviewUserID,
+        userId,
         comment_text,
       },
     })
