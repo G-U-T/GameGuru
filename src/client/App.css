@@ -425,3 +425,14 @@ p {
 
 
 
+h2 {
+  font-family: 'player', sans-serif;
+  font-size: 2em;
+  text-shadow: -2px 2px rgb(0, 0, 0);
+}
+
+h3 {
+  font-family: 'player', sans-serif;
+  font-size: 15px;
+  text-shadow: -2px 2px rgb(0, 0, 0);
+}

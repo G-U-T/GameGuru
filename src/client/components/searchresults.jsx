@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-
+import '../App.css';
 
 export default function SearchResults() {
    const location = useLocation();
