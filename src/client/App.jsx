@@ -8,6 +8,7 @@ import SingleGameInformation from './components/SingleGameInformation';
 import Login from './components/Login';
 import Register from './components/Register';
 import HomePage from './components/HomePage';
+import UserProfile from './components/UserProfile';
 
 import './App.css'
 
@@ -52,6 +53,10 @@ function App() {
             setSavedUserID={setSavedUserID}
             setSavedUserToken={setSavedUserToken}
             ></Register>
+          } />
+
+          <Route path="/profile" element={
+          <UserProfile></UserProfile>
           } />
         </Routes>
       </main>
