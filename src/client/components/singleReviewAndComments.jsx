@@ -38,25 +38,25 @@ const ReviewAndComments = ({savedUserID, savedUserToken}) => {
             }
         }
         getComments();
-       }, [newComment])
-
-  
-
-    useEffect(() => {
-        const getUsers = async() => {
-            try {
-              const response = await fetch(`/api/users`);
-              const result = await response.json();
-              if (response.ok) {
-                result.forEach((user) => {
-                  IDsToUsernames[user.id] = user.username;
-                });
-              }
-            } catch (error) {
-              console.error('Error getting users:', error);
+    }, [newComment])
+        
+        
+        
+        useEffect(() => {
+            const getUsers = async() => {
+                try {
+                    const response = await fetch(`/api/users`);
+                    const result = await response.json();
+                    if (response.ok) {
+                        result.forEach((user) => {
+                            IDsToUsernames[user.id] = user.username;
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error getting users:', error);
+                }
             }
-          }
-          getUsers();
+            getUsers();
     },[])
 
     
