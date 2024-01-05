@@ -43,11 +43,11 @@ const ReviewAndComments = () => {
 
             <div className="reviewFromReviewAndComments">
 
-                <p>Review Id: {singleReview.id}</p>
-                <p>Game Id: {singleReview.gameId}</p>
+                {/* <p>Review Id: {singleReview.id}</p> */}
+                {/* <p>Game Id: {singleReview.gameId}</p> */}
                 <p>User Id: {singleReview.userId}</p>
-                <p>Rating: {singleReview.rating} star</p>
-                <p>Summary: {singleReview.summary}</p>
+                <p>Rating: {'⭐'.repeat(singleReview.rating)} star</p>
+                <p>Summary: "{singleReview.summary}"</p>
         
             </div>
 
@@ -56,7 +56,7 @@ const ReviewAndComments = () => {
                     
                     <div key={comment.id} className="individualCommentFromReviewAndComments">
 
-                        <p>ID: {comment.id}</p>
+                        {/* <p>ID: {comment.id}</p> */}
                         <p>Reviews ID: {comment.reviewsId}</p>
                         <p>User ID: {comment.userId}</p>
                         <p>Comment: {comment.comment_text}</p>
