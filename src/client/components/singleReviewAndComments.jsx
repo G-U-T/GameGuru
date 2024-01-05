@@ -2,12 +2,15 @@ import { useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import '../App.css'
 
-const ReviewAndComments = () => {
+import WriteCommentForm from "./WriteCommentForm";
+
+const ReviewAndComments = ({savedUserID, savedUserToken}) => {
     const { singleGameId, reviewId } = useParams();
-    
     const [singleReview,setSingleReview] = useState({});
     const [comments, setComments] = useState([]);
     const [IDsToUsernames, setIdsToUsernames] = useState({})
+    const [newComment, setNewComment] = useState(null);
+
 
     useEffect(() => {
         const getReview = async() => {
@@ -35,6 +38,8 @@ const ReviewAndComments = () => {
             }
         }
         getComments();
+       }, [newComment])
+
     }, [])
 
     useEffect(() => {
@@ -53,8 +58,9 @@ const ReviewAndComments = () => {
           }
           getUsers();
     },[])
+
     
-    return (
+    return (<div className="row-flex">
         <section className="fullReviewAndComments">
 
             <h1>REVIEW AND COMMENTS</h1>
@@ -64,7 +70,7 @@ const ReviewAndComments = () => {
                 {/* <p>Review Id: {singleReview.id}</p> */}
                 {/* <p>Game Id: {singleReview.gameId}</p> */}
                 <p>User: {IDsToUsernames[singleReview.userId]}</p>
-                <p>Rating: {'⭐'.repeat(singleReview.rating)} star</p>
+                <p>Rating: {'⭐'.repeat(singleReview.rating)}</p>
                 <p>Summary: "{singleReview.summary}"</p>
         
             </div>
@@ -86,8 +92,13 @@ const ReviewAndComments = () => {
 
         </section>
 
+        <WriteCommentForm 
+        reviewID={singleReview.id} setNewComment={setNewComment}
+        savedUserID={savedUserID} savedUserToken={savedUserToken}
+        ></WriteCommentForm>
 
-    )
+
+    </div>)
 }
 
 export default ReviewAndComments

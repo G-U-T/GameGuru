@@ -42,7 +42,10 @@ function App() {
           } />
 
          <Route path='/api/games/:singleGameId/reviews/:reviewId' element={
-          <ReviewAndComments></ReviewAndComments>
+          <ReviewAndComments
+          savedUserID={savedUserID}
+          savedUserToken={savedUserToken}
+          ></ReviewAndComments>
          } />
 
           <Route path='/login' element={

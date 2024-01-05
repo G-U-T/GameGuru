@@ -31,9 +31,25 @@ const createGame = async() => {
             {title: 'SPIDERMAN 1', release_date: new Date('2004-04-04'), platform: 'PlayStation', genre:'open world', description:'n/a', cover_image_url: '/spiderman1.jpg'},
             {title: 'SPIDERMAN 2', release_date: new Date('2005-05-05'), platform: 'PlayStation', genre:'open world', description:'n/a', cover_image_url: '/spiderman2.jpg'},
             {title: 'SPIDERMAN 3', release_date: new Date('2006-06-06'), platform: 'PlayStation', genre:'open world', description:'n/a', cover_image_url: '/spiderman3.jpg'},
+            {title: 'MINECRAFT', release_date: new Date('2011-11-18'), platform: 'PlayStation', genre:'open world', description:'In Minecraft, players explore a blocky, pixelated procedurally generated, three-dimensional world with virtually infinite terrain. Players can discover and extract raw materials, craft tools and items, and build structures, earthworks, and machines.', cover_image_url: 'https://upload.wikimedia.org/wikipedia/en/5/51/Minecraft_cover.png'},
+            {title: 'CRASH BANDICOOT', release_date: new Date('1996-09-09'), platform: 'PlayStation', genre:'platform game', description:'Crash Bandicoot is a platform game in which the player controls the titular character Crash, who is tasked with traversing 32 levels to defeat Doctor Neo Cortex and rescue Tawna', cover_image_url: 'https://upload.wikimedia.org/wikipedia/en/4/44/Crash_Bandicoot_Cover.png'},
+            {title: 'FIGHT NIGHT CHAMPION', release_date: new Date('2011-03-01'), platform: 'PlayStation', genre:'sports', description:'Fight Night Champion is a multiplayer boxing game that blends traditional one-on-one pugilistic action of previous games in the Fight Night franchise with new, more gritty story-driven gameplay rooted in the all-new Champion Mode.', cover_image_url: 'https://upload.wikimedia.org/wikipedia/en/3/34/Fight_Night_Champion.jpg'},
+            {title: 'NBA 2K24', release_date: new Date('2023-09-08'), platform: 'PlayStation', genre:'sports', description:'Grab your squad and experience the past, present, and future of hoops culture in NBA 2K24. Enjoy loads of pure, authentic action and limitless personalized MyPLAYER options in MyCAREER. Collect an impressive array of legends and build your perfect lineup in MyTEAM.', cover_image_url: 'https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/NBA_2K_logo.svg/500px-NBA_2K_logo.svg.png'},
             {title: 'MARIO 1', release_date: new Date('2007-07-07'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/mario1.jpg'},
             {title: 'MARIO 2', release_date: new Date('2008-08-08'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/mario2.jpg'},
             {title: 'MARIO 3', release_date: new Date('2009-09-09'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/mario3.jpg'},
+            {title: 'PAPER MARIO ', release_date: new Date('2011-08-11'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/PAPERMARIO.jpg'},
+            {title: 'NEW YOSHI ISLAND ', release_date: new Date('2008-08-08'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/YOSHI.jpg'},
+            {title: 'SUPER MARIO PARTY', release_date: new Date('2018-12-15'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/MARIOPARTY.jpg'},
+            {title: 'METROID PRIME', release_date: new Date('2002-11-18'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/MET.jpg'},
+            {title: 'GOLDEN EYE 007', release_date: new Date('1997-01-27'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/007.jpg'},
+            {title: 'SMASH BROS.', release_date: new Date('2009-09-09'), platform: 'Nintendo', genre:'fighting', description:'n/a', cover_image_url: '/SMASH64.jpg'},
+            {title: 'POKEMON SNAP', release_date: new Date('2007-07-07'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/SNAP.jpg'},
+            {title: 'ZACK AND WIKI', release_date: new Date('2008-08-08'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/WIKI.jpg'},
+            {title: 'WII SPORTS', release_date: new Date('2009-09-09'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/SPORTS.jpg'},
+            {title: 'GUITAR HERO III', release_date: new Date('2007-07-07'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/HERO3.jpg'},
+            {title: 'SUPER GHOST N GOULS', release_date: new Date('2008-08-08'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/GHOST.jpg'},
+            {title: 'RED STEEL', release_date: new Date('2009-09-09'), platform: 'Nintendo', genre:'open world', description:'n/a', cover_image_url: '/STEEL.jpg'},
             {title: 'Grand Theft Auto 3', release_date: new Date('2010-10-10'), platform: 'PC', genre:'open world', description:'n/a', cover_image_url: '/GTA3.jpg'},
             {title: 'Grand Theft Auto 4', release_date: new Date('2011-11-11'), platform: 'PC', genre:'open world', description:'n/a', cover_image_url: '/GTA4.jpg'},
             {title: 'Grand Theft Auto 5', release_date: new Date('2012-12-12'), platform: 'PC', genre:'open world', description:'n/a', cover_image_url: '/GTA5.jpg'},
@@ -42,6 +58,12 @@ const createGame = async() => {
             {title: 'XCOM 2', release_date: new Date('2012-12-12'), platform: 'PC', genre:'open world', description:'n/a', cover_image_url: '/xcom2.jpg'},
             {title: 'Baldurs Gate 3', release_date: new Date('2012-12-12'), platform: 'PC', genre:'open world', description:'n/a', cover_image_url: '/baldurs.jpg'},
             {title: 'Elden Ring', release_date: new Date('2012-12-12'), platform: 'PC', genre:'open world', description:'n/a', cover_image_url: '/eldenring.jpg'},
+        
+        
+        
+        
+        
+        
         ],
     })
 }
