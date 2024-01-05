@@ -32,7 +32,7 @@ const HomePage = () => {
       <p>Discover the latest reviews, share your experiences, and connect with fellow gamers.</p>
       <img className="fade-in" src='/gamer.jpg' alt="Gamer playing on a laptop" style={{ border: '2px solid white', width: '500px', height: 'auto' }} />
       <img className="fade-in" src='/gamingteam.jpg' alt="team of gamers" style={{ border: '2px solid white', width: '500px', height: 'auto' }} />
-      <p className="bottom-text">Level up your gaming journey and unleash your game wisdom with Guru's!</p>
+      <p className="bottom-text">Level up your gaming journey and unleash your game wisdom with Gurus!</p>
     </div>
   </div>
   );

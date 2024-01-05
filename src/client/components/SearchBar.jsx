@@ -41,7 +41,7 @@ export const SearchBar = () => {
     <>
         <div className="input-container">
         <div className="input-wrapper">
-         <form onSubmit={fetchData}>
+         <form className="form" onSubmit={fetchData}>
             <FaSearch  id="search-icon"/>
             <input 
             type="text" 
