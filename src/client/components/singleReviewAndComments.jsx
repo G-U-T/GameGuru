@@ -6,10 +6,11 @@ import WriteCommentForm from "./WriteCommentForm";
 
 const ReviewAndComments = ({savedUserID, savedUserToken}) => {
     const { singleGameId, reviewId } = useParams();
-    
     const [singleReview,setSingleReview] = useState({});
     const [comments, setComments] = useState([]);
+    const [IDsToUsernames, setIdsToUsernames] = useState({})
     const [newComment, setNewComment] = useState(null);
+
 
     useEffect(() => {
         const getReview = async() => {
@@ -37,7 +38,27 @@ const ReviewAndComments = ({savedUserID, savedUserToken}) => {
             }
         }
         getComments();
-    }, [newComment])
+       }, [newComment])
+
+    }, [])
+
+    useEffect(() => {
+        const getUsers = async() => {
+            try {
+              const response = await fetch(`/api/users`);
+              const result = await response.json();
+              if (response.ok) {
+                result.forEach((user) => {
+                  IDsToUsernames[user.id] = user.username;
+                });
+              }
+            } catch (error) {
+              console.error('Error getting users:', error);
+            }
+          }
+          getUsers();
+    },[])
+
     
     return (<div className="row-flex">
         <section className="fullReviewAndComments">
@@ -47,8 +68,8 @@ const ReviewAndComments = ({savedUserID, savedUserToken}) => {
             <div className="reviewFromReviewAndComments">
 
                 {/* <p>Review Id: {singleReview.id}</p> */}
-                <p>Game Id: {singleReview.gameId}</p>
-                <p>User Id: {singleReview.userId}</p>
+                {/* <p>Game Id: {singleReview.gameId}</p> */}
+                <p>User: {IDsToUsernames[singleReview.userId]}</p>
                 <p>Rating: {'⭐'.repeat(singleReview.rating)}</p>
                 <p>Summary: "{singleReview.summary}"</p>
         
@@ -59,10 +80,10 @@ const ReviewAndComments = ({savedUserID, savedUserToken}) => {
                     
                     <div key={comment.id} className="individualCommentFromReviewAndComments">
 
-                        <p>ID: {comment.id}</p>
-                        <p>Reviews ID: {comment.reviewsId}</p>
-                        <p>User ID: {comment.userId}</p>
-                        <p>Comment: {comment.comment_text}</p>
+                        {/* <p>ID: {comment.id}</p> */}
+                        {/* <p>Reviews ID: {comment.reviewsId}</p> */}
+                        <p>User: {IDsToUsernames[comment.userId]}</p>
+                        <p>Comment: "{comment.comment_text}"</p>
                         
                     </div>
                 ))}
