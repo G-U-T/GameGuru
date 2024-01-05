@@ -46,7 +46,7 @@ const ConsoleGameList = () => {
         ))}
       </div>
 
-      <h2>Games on {consoleName}:</h2>
+      <h2 className="game-console">Games on {consoleName}:</h2>
 
       {/* Display filtered games */}
       <div className="game-list">

@@ -94,6 +94,7 @@ button, button:active {
 }
 
 .gallery a {
+  font-family: 'byte', sans-serif;
   text-decoration: none;
   color: inherit;
   font-size: 1.2rem;
@@ -265,6 +266,13 @@ h1 {
   text-shadow: 0px 8px #000000;
   width: 100%;
 }
+.game-console {
+  font-family: 'player', sans-serif;
+  font-size: 2rem;
+  color: #b4a4a4;
+  text-shadow: 0px 8px #000000;
+  width: 100%;
+}
 
 .homepage-container {
   max-width: 1200px;
@@ -417,3 +425,14 @@ p {
 
 
 
+h2 {
+  font-family: 'player', sans-serif;
+  font-size: 2em;
+  text-shadow: -2px 2px rgb(0, 0, 0);
+}
+
+h3 {
+  font-family: 'player', sans-serif;
+  font-size: 15px;
+  text-shadow: -2px 2px rgb(0, 0, 0);
+}

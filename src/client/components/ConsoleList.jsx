@@ -5,7 +5,7 @@ const ConsoleList = () => {
   return (
     <div className="gallery">
       <Link to="/api/consoles/playstation">PlayStation
-      <img src='/playstation.jpg' alt="PlayStation Logo" width='100' heigth='100'/>
+      <img src='/playstation.jpg' alt="PlayStation Logo" />
       </Link>
       
       <Link to="/api/consoles/xbox">Xbox
