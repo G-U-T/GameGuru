@@ -58,12 +58,6 @@ const createGame = async() => {
             {title: 'XCOM 2', release_date: new Date('2012-12-12'), platform: 'PC', genre:'open world', description:'n/a', cover_image_url: '/xcom2.jpg'},
             {title: 'Baldurs Gate 3', release_date: new Date('2012-12-12'), platform: 'PC', genre:'open world', description:'n/a', cover_image_url: '/baldurs.jpg'},
             {title: 'Elden Ring', release_date: new Date('2012-12-12'), platform: 'PC', genre:'open world', description:'n/a', cover_image_url: '/eldenring.jpg'},
-        
-        
-        
-        
-        
-        
         ],
     })
 }
@@ -90,58 +84,40 @@ const createReview = async() => {
     const Salvador = salvadorUserInfo.id;
     const Graham = grahamUserInfo.id;
 
-    await prisma.review.createMany({
-        data: [
-            {gameId: 1, userId: Somaan, rating: 1, summary: 'terrible game'},
-            {gameId: 1, userId: Joshua, rating: 3, summary: 'okay game'},
-            {gameId: 1, userId: Salvador, rating: 4, summary: 'good game'},
-            {gameId: 1, userId: Graham, rating: 5, summary: 'great game'},
-            {gameId: 2, userId: Somaan, rating: 1, summary: 'terrible game'},
-            {gameId: 2, userId: Joshua, rating: 3, summary: 'okay game'},
-            {gameId: 2, userId: Salvador, rating: 4, summary: 'good game'},
-            {gameId: 2, userId: Graham, rating: 5, summary: 'great game'},
-            {gameId: 3, userId: Somaan, rating: 1, summary: 'terrible game'},
-            {gameId: 3, userId: Joshua, rating: 3, summary: 'okay game'},
-            {gameId: 3, userId: Salvador, rating: 4, summary: 'good game'},
-            {gameId: 3, userId: Graham, rating: 5, summary: 'great game'},
-            {gameId: 4, userId: Somaan, rating: 1, summary: 'terrible game'},
-            {gameId: 4, userId: Joshua, rating: 3, summary: 'okay game'},
-            {gameId: 4, userId: Salvador, rating: 4, summary: 'good game'},
-            {gameId: 4, userId: Graham, rating: 5, summary: 'great game'},
-            {gameId: 5, userId: Somaan, rating: 1, summary: 'terrible game'},
-            {gameId: 5, userId: Joshua, rating: 3, summary: 'okay game'},
-            {gameId: 5, userId: Salvador, rating: 4, summary: 'good game'},
-            {gameId: 5, userId: Graham, rating: 5, summary: 'great game'},
-            {gameId: 6, userId: Somaan, rating: 1, summary: 'terrible game'},
-            {gameId: 6, userId: Joshua, rating: 3, summary: 'okay game'},
-            {gameId: 6, userId: Salvador, rating: 4, summary: 'good game'},
-            {gameId: 6, userId: Graham, rating: 5, summary: 'great game'},
-            {gameId: 7, userId: Somaan, rating: 1, summary: 'terrible game'},
-            {gameId: 7, userId: Joshua, rating: 3, summary: 'okay game'},
-            {gameId: 7, userId: Salvador, rating: 4, summary: 'good game'},
-            {gameId: 7, userId: Graham, rating: 5, summary: 'great game'},
-            {gameId: 8, userId: Somaan, rating: 1, summary: 'terrible game'},
-            {gameId: 8, userId: Joshua, rating: 3, summary: 'okay game'},
-            {gameId: 8, userId: Salvador, rating: 4, summary: 'good game'},
-            {gameId: 8, userId: Graham, rating: 5, summary: 'great game'},
-            {gameId: 9, userId: Somaan, rating: 1, summary: 'terrible game'},
-            {gameId: 9, userId: Joshua, rating: 3, summary: 'okay game'},
-            {gameId: 9, userId: Salvador, rating: 4, summary: 'good game'},
-            {gameId: 9, userId: Graham, rating: 5, summary: 'great game'},
-            {gameId: 10, userId: Somaan, rating: 1, summary: 'terrible game'},
-            {gameId: 10, userId: Joshua, rating: 3, summary: 'okay game'},
-            {gameId: 10, userId: Salvador, rating: 4, summary: 'good game'},
-            {gameId: 10, userId: Graham, rating: 5, summary: 'great game'},
-            {gameId: 11, userId: Somaan, rating: 1, summary: 'terrible game'},
-            {gameId: 11, userId: Joshua, rating: 3, summary: 'okay game'},
-            {gameId: 11, userId: Salvador, rating: 4, summary: 'good game'},
-            {gameId: 11, userId: Graham, rating: 5, summary: 'great game'},
-            {gameId: 12, userId: Somaan, rating: 1, summary: 'terrible game'},
-            {gameId: 12, userId: Joshua, rating: 3, summary: 'okay game'},
-            {gameId: 12, userId: Salvador, rating: 4, summary: 'good game'},
-            {gameId: 12, userId: Graham, rating: 5, summary: 'great game'}
-        ],
-    })
+    const getUser = (i) => {
+      switch (i % 4) {
+        case 0: return Somaan;
+        case 1: return Joshua;
+        case 2: return Salvador;
+        case 3: return Graham;
+      }
+    }
+    const getSummary = (rating) => {
+      switch (rating) {
+        case 1: return `terrible game`;
+        case 2: return `bad game`;
+        case 3: return `okay game`;
+        case 4: return `good game`;
+        case 5: return `great game`;
+      }
+    }
+
+    const numGames = await prisma.game.findMany();
+    const numReviewsPerGame = 5;
+
+    for (let i = 0; i < numGames.length; i++) {
+      for (let j = 0; j < numReviewsPerGame; j++) {
+        const rating = Math.floor(Math.random() * 5) + 1;
+        await prisma.review.create({
+          data: {
+            gameId: i + 1,
+            userId: getUser(j),
+            rating,
+            summary: getSummary(rating),
+          },
+        })
+      }
+    }
 }
 
 const createComment = async() => {
