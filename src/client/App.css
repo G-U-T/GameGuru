@@ -20,6 +20,7 @@ main {
 }
 
 main a {
+  text-decoration: none !important;
   color: #f5ffe8;
 }
 main a:visited {
@@ -261,7 +262,7 @@ h1 {
   font-family: 'craft', sans-serif;
   font-size: 3rem;
   color: #b4a4a4;
-  text-shadow: 0px 8px #4f1d4c;
+  text-shadow: 0px 8px #000000;
   width: 100%;
 }
 
@@ -294,7 +295,13 @@ img {
 
 @font-face{
   font-family: 'byte';
-  src: url('../../fonts/UglyByteFreeTrial-K7EBZ.otf') format('truetype');
+  src: url('../../fonts/UglyByteFreeTrial-K7EBZ.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face{
+  font-family: 'player';
+  src: url('../../fonts/PressStart2P.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -333,10 +340,11 @@ img {
 .header-text {
   font-family: 'atari', sans-serif;
   font-size: 2em;
-  text-shadow: -3px 3px goldenrod;
+  text-shadow: -3px 3px rgb(0, 0, 0);
 }
 
 .bottom-text {
+  font-family: 'byte', sans-serif;
   font-size: 1.5em;
   margin-top: 20px;
   border: solid whitesmoke; 
@@ -354,9 +362,9 @@ img {
   animation: starAnimation 1s ease-in-out infinite;
 }
 p {
-  font-family: 'byte', sans-serif;
+  font-family: 'player', sans-serif;
   font-size: 1.5em;
-  text-shadow: 1px 1px goldenrod;
+  text-shadow: -2px 2px rgb(0, 0, 0);
 }
 @keyframes flickerStars {
   0%, 100% {
