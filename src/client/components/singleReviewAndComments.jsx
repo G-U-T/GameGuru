@@ -2,11 +2,14 @@ import { useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import '../App.css'
 
-const ReviewAndComments = () => {
+import WriteCommentForm from "./WriteCommentForm";
+
+const ReviewAndComments = ({savedUserID, savedUserToken}) => {
     const { singleGameId, reviewId } = useParams();
     
     const [singleReview,setSingleReview] = useState({});
     const [comments, setComments] = useState([]);
+    const [newComment, setNewComment] = useState(null);
 
     useEffect(() => {
         const getReview = async() => {
@@ -34,20 +37,20 @@ const ReviewAndComments = () => {
             }
         }
         getComments();
-    }, [])
+    }, [newComment])
     
-    return (
+    return (<div className="row-flex">
         <section className="fullReviewAndComments">
 
             <h1>REVIEW AND COMMENTS</h1>
 
             <div className="reviewFromReviewAndComments">
 
-                <p>Review Id: {singleReview.id}</p>
+                {/* <p>Review Id: {singleReview.id}</p> */}
                 <p>Game Id: {singleReview.gameId}</p>
                 <p>User Id: {singleReview.userId}</p>
-                <p>Rating: {singleReview.rating} star</p>
-                <p>Summary: {singleReview.summary}</p>
+                <p>Rating: {'⭐'.repeat(singleReview.rating)}</p>
+                <p>Summary: "{singleReview.summary}"</p>
         
             </div>
 
@@ -68,8 +71,13 @@ const ReviewAndComments = () => {
 
         </section>
 
+        <WriteCommentForm 
+        reviewID={singleReview.id} setNewComment={setNewComment}
+        savedUserID={savedUserID} savedUserToken={savedUserToken}
+        ></WriteCommentForm>
 
-    )
+
+    </div>)
 }
 
 export default ReviewAndComments
